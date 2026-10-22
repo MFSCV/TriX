@@ -1,0 +1,46 @@
+{
+  "version": "0.2.0-alpha.1",
+  "date": "2026-10-22",
+  "baseline_commit": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+  "status": "implemented-local-alpha; wider-conversion-incomplete",
+  "environment": {
+    "os": "Linux",
+    "architecture": "x86_64",
+    "node": "v24.19.0"
+  },
+  "executed_checks": {
+    "npm_test": {
+      "tests": 149,
+      "passed": 149,
+      "failed": 0
+    },
+    "npm_run_demo": "LOCAL_VERIFIED; real CPU transform and installed callable output",
+    "diff_whitespace": "passed"
+  },
+  "implemented": [
+    "strict bounded typed one-node plan, verifier and canonical digest",
+    "durable SQLite jobs, idempotency, cancellation, effects and reconciliation",
+    "reviewed CPU text/JSON transforms and consumed project integration",
+    "authenticated loopback API and connected web workspace",
+    "headless CLI and native IDE/LSP source with fixture tests",
+    "explicit model HTTP adapter; MCP ingress/egress; ACP planning subset",
+    "optional scoped GitHub draft delivery, durable intent and reconciliation",
+    "private startup token and persistent model/connection revocation"
+  ],
+  "not_qualified": [
+    "live model inference or held-out model quality",
+    "live external MCP/ACP/editor-host interoperability",
+    "live GitHub delivery/CI status",
+    "visual browser rendering after unavailable Chromium download",
+    "reconstructed optional eve install/build/typecheck (dependency cache unavailable)",
+    "Windows/macOS/shell qualification (CI campaigns configured only)",
+    "OS arbitrary-code sandbox, independent audit, hosted multi-tenancy",
+    "GPU/cluster execution, production deployment, backup/restore/SLO qualification",
+    "complete general DAG/compiler/source-language frontend"
+  ],
+  "publication": {
+    "remote_source_changes": "not pushed; automatic approval review rejected publication authorization",
+    "private_review_artifact": "patch applies to pinned baseline",
+    "production_deployment": "not performed"
+  }
+}

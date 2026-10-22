@@ -1,0 +1,8 @@
+{
+ "name":"trix-control-facade","version":"0.1.0","private":true,"type":"module",
+ "imports":{"#*":"./agent/*"},
+ "scripts":{"build":"eve build","dev":"eve dev","start":"eve start","typecheck":"tsc"},
+ "dependencies":{"@vercel/connect":"2.5.2","ai":"7.0.149","eve":"0.82.0","zod":"4.5.4"},
+ "devDependencies":{"@types/node":"24.0.0","typescript":"7.0.2","just-bash":"3.6.0"},
+ "engines":{"node":"24.x"}
+}

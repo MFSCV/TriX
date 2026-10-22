@@ -1,0 +1,16 @@
+{
+  "name": "trix-agent",
+  "version": "0.2.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "description": "TriX local agent control service, CLI and verified CPU project delivery",
+  "engines": {"node": ">=24.0.0"},
+  "bin": {"trix": "runtime/bin/trix.mjs"},
+  "scripts": {
+    "test": "node --test environment-lab/tests/*.test.mjs runtime/tests/*.test.mjs",
+    "start": "node runtime/bin/trix.mjs serve",
+    "doctor": "node runtime/bin/trix.mjs doctor --output json",
+    "demo": "node runtime/examples/end-to-end.mjs",
+    "test:runtime": "node --test runtime/tests/*.test.mjs"
+  }
+}

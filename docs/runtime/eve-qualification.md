@@ -1,0 +1,11 @@
+# eve and IDE qualification scope
+
+The optional eve facade calls the same authenticated TriX RPC API as the CLI/browser. Its project allowlist and task ownership checks run in code. Bundle computation fixes apply=false and a stable project/plan idempotency key. Root delegation and optional framework default tools are disabled. No arbitrary code, file application, project binding, publication or deployment tool is provided.
+
+The VS Code extension invokes the reviewed CLI with argv and bounded stdin JSON. It enforces handler-level workspace trust, explicit multi-root selection, real-root/binding equivalence, URI/document-version/buffer-hash snapshots, selected task ownership and verified exact-input read-only diffs. It does not mutate unsaved editor buffers. Configure Node24+ and the CLI in the actual extension host. Web/virtual workspaces and universal editor compatibility remain unqualified.
+
+The language server uses Content-Length stdio framing and full-document synchronization. It diagnoses JSON and shared-plan semantics, rejects unsupported methods and advertises no source grammar, completion, formatter, debugger or execution capabilities.
+
+The restored focused suite has 13 cases for snapshots, trust, argv/stdin/output, LSP framing/revision handling, eve allowlists, fixed apply=false, stable replay, task ownership, secret-redacted errors, and real API/CPU-worker bundle integration with one shared identity. The restored suite was rerun against the reconstructed runtime and all 13 cases passed; native bridge files also passed Node syntax checks. Mock process/editor/provider fixtures are not real editor-host/model qualification.
+
+Before workspace loss the original optional eve application passed typecheck/build after the missing just-bash virtual-workspace dependency was installed. This reconstructed source has pinned direct dependencies but no recovered full transitive lock. A strictly offline scaffold restoration failed ENOTCACHED for pathe; no new build/typecheck is claimed. Resolve dependencies, retain a real lockfile and rerun before release. just-bash is not an OS security boundary. Live model conversation, real editor UI/accessibility/remote hosts, upgrade/restore and framework crash recovery remain unqualified. No API credential, paid subscription, public service or Marketplace publication was created.

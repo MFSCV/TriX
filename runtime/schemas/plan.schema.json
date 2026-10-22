@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trix:schema:plan:v1",
+  "title": "TriX controlled CPU logical plan version 1",
+  "description": "A single reviewed pure transform node. Structural validation does not establish authority, digest integrity, input byte limits, duplicate-key rejection or executor qualification; use verifyPlan before effects.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_id", "source_revision", "target", "goal", "operation", "options", "input", "nodes", "id"],
+  "properties": {
+    "schema_version": { "const": "trix.plan/v1" },
+    "project_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" },
+    "source_revision": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "target": { "const": "cpu" },
+    "goal": { "type": "string", "maxLength": 4000 },
+    "operation": { "enum": ["text.normalize", "json.transform"] },
+    "options": { "type": "object" },
+    "input": { "type": "string", "maxLength": 1048576 },
+    "id": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "nodes": {
+      "type": "array", "minItems": 1, "maxItems": 1,
+      "items": { "type": "object", "additionalProperties": false,
+        "required": ["id", "operation", "depends_on"],
+        "properties": { "id": { "const": "transform" }, "operation": { "enum": ["text.normalize", "json.transform"] }, "depends_on": { "type": "array", "maxItems": 0 } }
+      }
+    }
+  },
+  "allOf": [
+    { "if": { "properties": { "operation": { "const": "text.normalize" } } },
+      "then": { "properties": {
+        "options": { "type": "object", "additionalProperties": false, "required": ["trim", "case", "newline"], "properties": { "trim": { "type": "boolean" }, "case": { "enum": ["preserve", "upper", "lower"] }, "newline": { "const": "lf" } } },
+        "nodes": { "items": { "properties": { "operation": { "const": "text.normalize" } } } }
+      } }
+    },
+    { "if": { "properties": { "operation": { "const": "json.transform" } } },
+      "then": { "properties": {
+        "options": { "type": "object", "additionalProperties": false, "required": ["sort_keys"], "properties": { "sort_keys": { "type": "boolean" }, "pick": { "type": "array", "maxItems": 128, "uniqueItems": true, "items": { "type": "string", "maxLength": 256 } } } },
+        "nodes": { "items": { "properties": { "operation": { "const": "json.transform" } } } }
+      } }
+    }
+  ]
+}

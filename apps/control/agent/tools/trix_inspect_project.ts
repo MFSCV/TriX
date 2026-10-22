@@ -1,0 +1,2 @@
+import {defineTool} from 'eve/tools';import {z} from 'zod';import {inspectProject} from '../lib/trix-api';
+export default defineTool({availableInSubagents:false,description:'Inspect a previously bound allowlisted project; no new paths or execution.',inputSchema:z.object({projectId:z.string().min(1).max(96)}).strict(),async execute(input,ctx){return inspectProject(input.projectId,{signal:ctx.abortSignal});}});

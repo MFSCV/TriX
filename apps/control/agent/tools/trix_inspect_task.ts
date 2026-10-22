@@ -1,0 +1,2 @@
+import {defineTool} from 'eve/tools';import {z} from 'zod';import {inspectTask} from '../lib/trix-api';
+export default defineTool({availableInSubagents:false,description:'Observe actual shared task status and optional evidence. Acceptance is not completion.',inputSchema:z.object({projectId:z.string().min(1).max(96),taskId:z.string().min(1).max(128),evidence:z.boolean().optional()}).strict(),async execute(input,ctx){return inspectTask(input,{signal:ctx.abortSignal});}});

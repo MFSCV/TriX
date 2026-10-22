@@ -1,0 +1,2 @@
+import {defineTool} from 'eve/tools';import {z} from 'zod';import {cancelTask} from '../lib/trix-api';
+export default defineTool({availableInSubagents:false,description:'Request cancellation of an allowed task. Does not reverse effects or prove stopped execution.',inputSchema:z.object({projectId:z.string().min(1).max(96),taskId:z.string().min(1).max(128)}).strict(),async execute(input,ctx){return cancelTask(input,{signal:ctx.abortSignal});}});

@@ -1,0 +1,29 @@
+name: TriX runtime and native workflow checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  portable-core:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Core, client and protocol conformance
+        run: node --test environment-lab/tests/*.test.mjs runtime/tests/core-executor.test.mjs runtime/tests/cli.test.mjs runtime/tests/model-protocols.test.mjs runtime/tests/ide.test.mjs
+  local-delivery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm test
+      - run: npm run demo
