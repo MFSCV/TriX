@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "version",
+    "lifecycle",
+    "operations",
+    "effects",
+    "platforms",
+    "version_constraints",
+    "capabilities",
+    "maintainer",
+    "evidence_status",
+    "qualification"
+  ],
+  "properties": {
+    "schema": {
+      "const": "trix.adapter-profile/v0.1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[-a-z0-9]{1,80}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "lifecycle": {
+      "enum": [
+        "planned",
+        "experimental",
+        "deprecated",
+        "unsupported"
+      ]
+    },
+    "operations": {
+      "type": "array",
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 200
+      }
+    },
+    "effects": {
+      "type": "array",
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 200
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 200
+      }
+    },
+    "version_constraints": {
+      "type": "object"
+    },
+    "capabilities": {
+      "type": "object"
+    },
+    "maintainer": {
+      "type": "string",
+      "minLength": 0,
+      "maxLength": 200
+    },
+    "evidence_status": {
+      "enum": [
+        "proposed",
+        "implemented"
+      ]
+    },
+    "qualification": {
+      "const": "not-qualified"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TriX declarative adapter profile",
+  "description": "Registration never loads executable code, grants authority or establishes qualification."
+}

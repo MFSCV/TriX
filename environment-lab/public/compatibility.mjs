@@ -37,7 +37,7 @@ export function preset(key){let s=defaults();s.name=presetNames[key]||s.name;s.g
 export function assessGroup(g,s){const issues=[];const add=(level,code,message,fix,ref)=>issues.push({level,code,message,fix,ref,group:g.id});
  const err=(c,m,f,r='PLT-001')=>add('error',c,m,f,r), warn=(c,m,f,r='PLT-008')=>add('warning',c,m,f,r);
  const mobile=['ios','android'].includes(g.os), browser=g.os==='browser', service=['remote','tpu','neuron'].includes(g.backend);
- if(!architectures[g.arch]||!operatingSystems[g.os]||!devices[g.device]||!backends[g.backend])err('UNKNOWN_TARGET','Unknown target or backend.','Choose a registered planning profile.','CON-006');
+ if(!Object.hasOwn(architectures,g.arch)||!Object.hasOwn(operatingSystems,g.os)||!Object.hasOwn(devices,g.device)||!Object.hasOwn(backends,g.backend))err('UNKNOWN_TARGET','Unknown target or backend.','Choose a registered planning profile.','CON-006');
  if(!Number.isInteger(g.count)||g.count<1||g.count>1024)err('NODE_COUNT','Node count must be an integer from 1 to 1024.','Correct the number of nodes.','LNG-012');
  if(!Number.isFinite(g.ram)||g.ram<1||g.ram>1048576||!Number.isFinite(g.vram)||g.vram<0||g.vram>1048576)err('MEMORY_VALUE','Memory must be finite and within the planning bounds.','Use positive host RAM and nonnegative device memory.','LSP-008');
  if(g.os==='macos'&&!['arm64','x86_64'].includes(g.arch))err('MAC_ISA','This macOS profile requires ARM64 or x86-64.','Select Apple ARM64 or an Intel Mac.');

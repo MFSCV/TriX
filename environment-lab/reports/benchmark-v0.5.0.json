@@ -1,0 +1,277 @@
+{
+  "schema": "trix.benchmark/v1",
+  "version": "0.5.0",
+  "created_at": "2026-10-22T22:44:58.739Z",
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
+  },
+  "method": {
+    "warmup": 30,
+    "samples": 300,
+    "clock": "performance.now",
+    "scope": "Warm deterministic tools in this container; excludes browser rendering, network, live AI, MCP, R2 and external deployment. No production SLO is inferred."
+  },
+  "results": [
+    {
+      "name": "environment.validate",
+      "samples": 300,
+      "p50_ms": 0.013790999999997666,
+      "p95_ms": 0.15255600000000413,
+      "max_ms": 1.284331999999992
+    },
+    {
+      "name": "environment.generate",
+      "samples": 300,
+      "p50_ms": 0.0362530000000163,
+      "p95_ms": 0.1641729999999768,
+      "max_ms": 0.6428920000000176
+    },
+    {
+      "name": "reference.execute",
+      "samples": 300,
+      "p50_ms": 0.010505999999992355,
+      "p95_ms": 0.031857000000002245,
+      "max_ms": 0.5055389999999989
+    },
+    {
+      "name": "configuration.roundtrip",
+      "samples": 300,
+      "p50_ms": 0.17408799999998337,
+      "p95_ms": 0.4393410000000131,
+      "max_ms": 1.5504060000000095
+    },
+    {
+      "name": "configuration.sha256",
+      "samples": 300,
+      "p50_ms": 0.008021999999982654,
+      "p95_ms": 0.04018899999999803,
+      "max_ms": 0.7235610000000179
+    }
+  ],
+  "outputs": {
+    "cpu": {
+      "status": "SUCCEEDED",
+      "value": 50,
+      "operations": 3
+    },
+    "configuration": {
+      "schema": "trix.environment-planning/v2",
+      "bytes": 11176,
+      "sha256": "79139f53c5735b48a1491d0a464cc83b65979ddcc428c65998f9bc17e39bac2d",
+      "roundtrip": true
+    },
+    "profiles": [
+      {
+        "name": "hybrid",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "apple",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "nvidia",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "amd",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "intel",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "cpu",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "qualcomm",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "remote",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "tpu",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "neuron",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      },
+      {
+        "name": "gaudi",
+        "errors": 0,
+        "artifact": "trix.environment-planning/v2"
+      }
+    ]
+  },
+  "routing": {
+    "scope": "Fixed synthetic local-command regression set; not a model quality evaluation",
+    "samples": 28,
+    "passed": 28,
+    "results": [
+      {
+        "prompt": "What is TriX?",
+        "intent": "about",
+        "actual": "about"
+      },
+      {
+        "prompt": "What does TriX do?",
+        "intent": "about",
+        "actual": "about"
+      },
+      {
+        "prompt": "How do I use TriX?",
+        "intent": "about",
+        "actual": "about"
+      },
+      {
+        "prompt": "Help",
+        "intent": "about",
+        "actual": "about"
+      },
+      {
+        "prompt": "How does your specialist team work?",
+        "intent": "team",
+        "actual": "team"
+      },
+      {
+        "prompt": "Show task evidence",
+        "intent": "activity",
+        "actual": "activity"
+      },
+      {
+        "prompt": "Show MCP connections",
+        "intent": "connections",
+        "actual": "connections"
+      },
+      {
+        "prompt": "Explain the audit loop",
+        "intent": "audit",
+        "actual": "audit"
+      },
+      {
+        "prompt": "Run the pure CPU example",
+        "intent": "cpu",
+        "actual": "cpu"
+      },
+      {
+        "prompt": "Please run the CPU example",
+        "intent": "cpu",
+        "actual": "cpu"
+      },
+      {
+        "prompt": "Do not run the CPU example",
+        "intent": "reference",
+        "actual": "reference"
+      },
+      {
+        "prompt": "Explain the CPU reference",
+        "intent": "reference",
+        "actual": "reference"
+      },
+      {
+        "prompt": "Generate a technical configuration",
+        "intent": "generate",
+        "actual": "generate"
+      },
+      {
+        "prompt": "Generate an environment configuration",
+        "intent": "generate",
+        "actual": "generate"
+      },
+      {
+        "prompt": "Generate a React application",
+        "intent": "unavailable",
+        "actual": "unavailable"
+      },
+      {
+        "prompt": "Create an invoice",
+        "intent": "unavailable",
+        "actual": "unavailable"
+      },
+      {
+        "prompt": "Validate my current environment",
+        "intent": "validate",
+        "actual": "validate"
+      },
+      {
+        "prompt": "Check compatibility",
+        "intent": "validate",
+        "actual": "validate"
+      },
+      {
+        "prompt": "Verify my current environment",
+        "intent": "validate",
+        "actual": "validate"
+      },
+      {
+        "prompt": "Validate my invoice",
+        "intent": "unavailable",
+        "actual": "unavailable"
+      },
+      {
+        "prompt": "Compare scenarios",
+        "intent": "compare",
+        "actual": "compare"
+      },
+      {
+        "prompt": "Compare hotels",
+        "intent": "unavailable",
+        "actual": "unavailable"
+      },
+      {
+        "prompt": "Inspect the workflow",
+        "intent": "workflow",
+        "actual": "workflow"
+      },
+      {
+        "prompt": "Help me plan my environment",
+        "intent": "environment",
+        "actual": "environment"
+      },
+      {
+        "prompt": "Plan a holiday",
+        "intent": "unavailable",
+        "actual": "unavailable"
+      },
+      {
+        "prompt": "Explain hardware requirements",
+        "intent": "environment",
+        "actual": "environment"
+      },
+      {
+        "prompt": "Executa o exemplo CPU",
+        "intent": "cpu",
+        "actual": "cpu"
+      },
+      {
+        "prompt": "Não executar o exemplo CPU",
+        "intent": "reference",
+        "actual": "reference"
+      }
+    ]
+  },
+  "unmeasured": [
+    "Live model latency and TTFT",
+    "Live MCP/target output quality",
+    "Hosted R2 and deployment latency",
+    "Load, concurrency and recovery SLOs"
+  ]
+}

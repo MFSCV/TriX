@@ -1,0 +1,150 @@
+{
+  "schema": "trix.routing-evaluation/v1",
+  "stage": "baseline",
+  "source": "1ad05932260dea02b119873ae11929f730cf9193",
+  "method": "Exact predicate order extracted from the v0.4 local dispatcher; fixed synthetic request set, not an LLM evaluation",
+  "samples": 28,
+  "passed": 16,
+  "results": [
+    {
+      "prompt": "What is TriX?",
+      "intent": "about",
+      "actual": "unavailable"
+    },
+    {
+      "prompt": "What does TriX do?",
+      "intent": "about",
+      "actual": "unavailable"
+    },
+    {
+      "prompt": "How do I use TriX?",
+      "intent": "about",
+      "actual": "unavailable"
+    },
+    {
+      "prompt": "Help",
+      "intent": "about",
+      "actual": "unavailable"
+    },
+    {
+      "prompt": "How does your specialist team work?",
+      "intent": "team",
+      "actual": "team"
+    },
+    {
+      "prompt": "Show task evidence",
+      "intent": "activity",
+      "actual": "activity"
+    },
+    {
+      "prompt": "Show MCP connections",
+      "intent": "connections",
+      "actual": "connections"
+    },
+    {
+      "prompt": "Explain the audit loop",
+      "intent": "audit",
+      "actual": "audit"
+    },
+    {
+      "prompt": "Run the pure CPU example",
+      "intent": "cpu",
+      "actual": "cpu"
+    },
+    {
+      "prompt": "Please run the CPU example",
+      "intent": "cpu",
+      "actual": "cpu"
+    },
+    {
+      "prompt": "Do not run the CPU example",
+      "intent": "reference",
+      "actual": "cpu"
+    },
+    {
+      "prompt": "Explain the CPU reference",
+      "intent": "reference",
+      "actual": "reference"
+    },
+    {
+      "prompt": "Generate a technical configuration",
+      "intent": "generate",
+      "actual": "generate"
+    },
+    {
+      "prompt": "Generate an environment configuration",
+      "intent": "generate",
+      "actual": "generate"
+    },
+    {
+      "prompt": "Generate a React application",
+      "intent": "unavailable",
+      "actual": "generate"
+    },
+    {
+      "prompt": "Create an invoice",
+      "intent": "unavailable",
+      "actual": "unavailable"
+    },
+    {
+      "prompt": "Validate my current environment",
+      "intent": "validate",
+      "actual": "validate"
+    },
+    {
+      "prompt": "Check compatibility",
+      "intent": "validate",
+      "actual": "validate"
+    },
+    {
+      "prompt": "Verify my current environment",
+      "intent": "validate",
+      "actual": "environment"
+    },
+    {
+      "prompt": "Validate my invoice",
+      "intent": "unavailable",
+      "actual": "validate"
+    },
+    {
+      "prompt": "Compare scenarios",
+      "intent": "compare",
+      "actual": "compare"
+    },
+    {
+      "prompt": "Compare hotels",
+      "intent": "unavailable",
+      "actual": "compare"
+    },
+    {
+      "prompt": "Inspect the workflow",
+      "intent": "workflow",
+      "actual": "workflow"
+    },
+    {
+      "prompt": "Help me plan my environment",
+      "intent": "environment",
+      "actual": "environment"
+    },
+    {
+      "prompt": "Plan a holiday",
+      "intent": "unavailable",
+      "actual": "environment"
+    },
+    {
+      "prompt": "Explain hardware requirements",
+      "intent": "environment",
+      "actual": "unavailable"
+    },
+    {
+      "prompt": "Executa o exemplo CPU",
+      "intent": "cpu",
+      "actual": "cpu"
+    },
+    {
+      "prompt": "Não executar o exemplo CPU",
+      "intent": "reference",
+      "actual": "cpu"
+    }
+  ]
+}

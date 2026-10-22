@@ -1,0 +1,177 @@
+{
+  "schema": "trix.documentation-inventory/v1",
+  "version": "0.5.0",
+  "reviewDate": "2026-10-22",
+  "scope": "Product purpose, implementation applicability and documentary consistency. Binary editions, packaged originals and authoring history are preserved; this is not a new language-standard adoption or visual revalidation of historical documents.",
+  "sources": [
+    {
+      "id": "REV-SRC-001",
+      "title": "User instructions: review system explanations, all project documentation, tests, measurements, audit-led improvements, GitHub push and version tracker; opening-screen clarification",
+      "authority": "accepted user direction",
+      "date": "2026-10-22",
+      "access": "conversation",
+      "scope": "current release"
+    },
+    {
+      "id": "REV-SRC-002",
+      "title": "Private Site application source",
+      "revision": "1ad05932260dea02b119873ae11929f730cf9193",
+      "authority": "observed implementation",
+      "access": "read source and regression baseline",
+      "scope": "application 0.4 before this review"
+    },
+    {
+      "id": "REV-SRC-003",
+      "title": "MFSCV/TriX public repository",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "authority": "observed older public source",
+      "access": "repository metadata, recursive tree and documentation reads",
+      "scope": "source reconciliation"
+    },
+    {
+      "id": "REV-SRC-004",
+      "title": "docs/TriX_Design_and_Implementation_Standard_v0_2.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "b4dbc48514967f7c10bcbc7e75f261f54e755f1d",
+      "authority": "proposed project baseline",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-005",
+      "title": "docs/TriX_MCP_and_Connection_Requirements_v0.2.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "14e3dc81c0dfdd8e949b752d39c2e38c543887c5",
+      "authority": "proposed project baseline",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-006",
+      "title": "preimplementation/CHANGELOG.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "e5501d59a58a95b6b1b203ffc17e376b724d8990",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-007",
+      "title": "preimplementation/README.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "02f302aca1688a0b08dcc713a89e4a0e0fa0907d",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-008",
+      "title": "preimplementation/docs/GAP_AND_DECISION_REGISTER.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "0c00a8179055729ba923c0d8cc1b6952f2ae502c",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-009",
+      "title": "preimplementation/docs/IMPLEMENTER_GUIDE.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "8829510a385955d97d6bf9c2170434e1ef2ba6f6",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-010",
+      "title": "preimplementation/docs/LANGUAGE_DECISION_EXPERIMENTS.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "73f851df6078551e12b3058a499ac22d2c413e07",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-011",
+      "title": "preimplementation/docs/REFERENCE_WORKFLOWS.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "1ce0ca1b22b502ee72e7734be1a4c5df7f62f493",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-012",
+      "title": "preimplementation/docs/TriX_Design_and_Implementation_Standard_v0_2.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "b4dbc48514967f7c10bcbc7e75f261f54e755f1d",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-013",
+      "title": "preimplementation/examples/README.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "8f8ed365fe98fb1401e4d20ddc722a7d1af4e8c8",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-014",
+      "title": "preimplementation/schemas/README.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "1500785f4b5a9b5d620079a960021cfb8be12dd8",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-015",
+      "title": "preimplementation/templates/ACCEPTANCE_PROFILE_TEMPLATE.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "3d86e95093e6df2140793a55d6f64df8f543da21",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-016",
+      "title": "preimplementation/templates/ADR_TEMPLATE.md",
+      "revision": "3b516c2b35bb2dba04aadeef58609d74da861f04",
+      "git_blob": "e3ac7935792f2fa269bbb779f7870e850d9650fc",
+      "authority": "preserved proposed preimplementation package",
+      "access": "text read",
+      "scope": "authority, purpose, requirements and current-vs-proposed applicability"
+    },
+    {
+      "id": "REV-SRC-017",
+      "title": "Library TriX End-to-End Agent Conversion Plan 0.1",
+      "access": "all 730 text lines read",
+      "authority": "proposed programme",
+      "treatment": "Preserved; unimplemented CLI/IDE/worker gates remain open."
+    },
+    {
+      "id": "REV-SRC-018",
+      "title": "Library TriX Agentic UI/UX Transformation Plan 0.1",
+      "access": "all 27 pages read as text",
+      "authority": "historical design proposal",
+      "treatment": "Persistent dashboard layout superseded by later explicit user direction. Original PDF and pack preserved."
+    },
+    {
+      "id": "REV-SRC-019",
+      "title": "Library TriX Design and Implementation Standard 0.2",
+      "access": "all 1076 text lines read",
+      "authority": "proposed normative baseline",
+      "treatment": "Language requirements not rewritten or declared implemented."
+    },
+    {
+      "id": "REV-SRC-020",
+      "title": "Library MCP and Connection Requirements 0.2",
+      "access": "all 265 text lines read",
+      "authority": "proposed connection baseline",
+      "treatment": "Proposal scope distinguished from implemented adapter."
+    }
+  ]
+}

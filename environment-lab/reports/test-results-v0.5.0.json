@@ -1,0 +1,106 @@
+{
+  "schema": "trix.check-results/v1",
+  "version": "0.5.0",
+  "created_at": "2026-10-22T22:46:00.871Z",
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux"
+  },
+  "scope": "Source regression and build checks in the development container. Provider calls are simulated; no live service qualification is inferred.",
+  "tests": {
+    "tests": 168,
+    "passed": 168,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "stages": [
+    {
+      "name": "syntax: public/chat.mjs",
+      "status": "passed",
+      "duration_ms": 113.367
+    },
+    {
+      "name": "syntax: public/app.js",
+      "status": "passed",
+      "duration_ms": 86.804
+    },
+    {
+      "name": "syntax: public/workspace-ui.mjs",
+      "status": "passed",
+      "duration_ms": 115.017
+    },
+    {
+      "name": "syntax: public/task-store.mjs",
+      "status": "passed",
+      "duration_ms": 91.923
+    },
+    {
+      "name": "syntax: public/conversation-store.mjs",
+      "status": "passed",
+      "duration_ms": 74.53
+    },
+    {
+      "name": "syntax: public/local-intent.mjs",
+      "status": "passed",
+      "duration_ms": 86.288
+    },
+    {
+      "name": "syntax: public/product-info.mjs",
+      "status": "passed",
+      "duration_ms": 122.544
+    },
+    {
+      "name": "syntax: worker/index.js",
+      "status": "passed",
+      "duration_ms": 71.842
+    },
+    {
+      "name": "regression",
+      "status": "passed",
+      "duration_ms": 1620.589
+    },
+    {
+      "name": "build",
+      "status": "passed",
+      "duration_ms": 159.384
+    },
+    {
+      "name": "worker artifact",
+      "status": "passed",
+      "duration_ms": 257.072
+    },
+    {
+      "name": "current documentation relative links",
+      "status": "passed",
+      "links": 35
+    }
+  ],
+  "testFiles": [
+    {
+      "path": "tests/agents.test.mjs",
+      "sha256": "0ec3a1942e848d0babaaf6f79cc9817f6211be1c00beb53ced6875e088fc9ee5"
+    },
+    {
+      "path": "tests/configurator.test.mjs",
+      "sha256": "59dfe67a1f7e8f615b044e6f2f9723ddbe601e12db8319ff41cafbf3b3d72584"
+    },
+    {
+      "path": "tests/orchestrator.test.mjs",
+      "sha256": "a8dae01adb26b5d3262bc2c5d2fd9bf896320eda34c6c24ab57768b77b95adb5"
+    },
+    {
+      "path": "tests/product-guidance.test.mjs",
+      "sha256": "cf885e44c391b14f39213f7e8e0c6ef750ea496f314f7cef1803bd46177f8bac"
+    },
+    {
+      "path": "tests/task-workspace.test.mjs",
+      "sha256": "62979028e19d0a44247eecb16e1b4a58d613a1d8a87aac603902a64196825f25"
+    },
+    {
+      "path": "tests/v2.test.mjs",
+      "sha256": "638151fcf00bc49c22fc205b8f61d0c29083a1a333f57b22f7b7933dc5984cd8"
+    }
+  ]
+}

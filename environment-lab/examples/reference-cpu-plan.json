@@ -1,0 +1,37 @@
+{
+  "schema": "trix.reference-plan/v0.1",
+  "name": "Pure CPU dependency example",
+  "effects": [],
+  "tasks": [
+    {
+      "id": "task-base",
+      "operation": "number.constant",
+      "args": {
+        "value": 6
+      }
+    },
+    {
+      "id": "task-scaled",
+      "operation": "number.multiply",
+      "args": {
+        "left": {
+          "ref": "task-base"
+        },
+        "right": 7
+      }
+    },
+    {
+      "id": "task-result",
+      "operation": "number.add",
+      "args": {
+        "left": {
+          "ref": "task-scaled"
+        },
+        "right": 8
+      }
+    }
+  ],
+  "outputs": [
+    "task-result"
+  ]
+}

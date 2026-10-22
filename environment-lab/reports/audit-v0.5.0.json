@@ -1,0 +1,76 @@
+{
+  "schema": "trix.quality-audit/v1",
+  "version": "0.5.0",
+  "date": "2026-10-22",
+  "method": "Implementation-led product QA and focused source/regression review; not independent security certification",
+  "findings": [
+    {
+      "id": "QA-001",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-002",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-003",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-004",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-005",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-006",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-007",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-008",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-009",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-010",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-011",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    },
+    {
+      "id": "QA-012",
+      "status": "fixed-and-rechecked",
+      "evidence": "docs/release-audit-v0.5.0.md"
+    }
+  ],
+  "openGates": [
+    "REV-GAP-001",
+    "REV-GAP-002",
+    "REV-GAP-003",
+    "REV-GAP-004",
+    "REV-GAP-005",
+    "REV-GAP-006"
+  ]
+}

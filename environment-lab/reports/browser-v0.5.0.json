@@ -1,0 +1,107 @@
+{
+  "schema": "trix.browser-acceptance/v1",
+  "version": "0.5.0",
+  "date": "2026-10-22",
+  "scope": "Manual managed development preview; disposable identity/storage; no live model/MCP; not an exhaustive browser/device matrix",
+  "observations": [
+    {
+      "id": "B01",
+      "check": "Opening purpose and explicit input/output",
+      "result": "passed"
+    },
+    {
+      "id": "B02",
+      "check": "Purpose panel and input/result/next disclosure",
+      "result": "passed"
+    },
+    {
+      "id": "B03",
+      "check": "Unsupported React request shows missing connection",
+      "result": "passed"
+    },
+    {
+      "id": "B04",
+      "check": "Missing model and MCP readiness shown honestly",
+      "result": "passed"
+    },
+    {
+      "id": "B05",
+      "check": "Browser CPU result and three-operation trace",
+      "result": "passed",
+      "output": 50,
+      "sha256": "6516e94555016664f830748894d4a57f1dfdd3e0e21b710abe8221e41af0b044"
+    },
+    {
+      "id": "B06",
+      "check": "CPU response measurements visible",
+      "result": "passed",
+      "worker_roundtrip_and_digest_ms": 30.3,
+      "samples": 1
+    },
+    {
+      "id": "B07",
+      "check": "Environment edit propagates to chat generation; CUDA_TARGET blocks export",
+      "result": "passed-after-QA-011-fix"
+    },
+    {
+      "id": "B08",
+      "check": "Valid configuration inspection, download, independent hash and UI import",
+      "result": "passed",
+      "download_bytes": 15294,
+      "sha256": "995b610420de2f5a864ea931e7030aac53df8c4e314f393620b91d150cb98c7d"
+    },
+    {
+      "id": "B09",
+      "check": "Two saved scenarios show different hardware and runtimes",
+      "result": "passed"
+    },
+    {
+      "id": "B10",
+      "check": "Workflow task creation, self-cycle rejection and repair",
+      "result": "passed"
+    },
+    {
+      "id": "B11",
+      "check": "Conversation survives reload",
+      "result": "passed"
+    },
+    {
+      "id": "B12",
+      "check": "External action scope disabled without enrolled server",
+      "result": "passed"
+    },
+    {
+      "id": "B13",
+      "check": "Theme controls and narrow layout",
+      "result": "passed-after-QA-012-fix",
+      "viewports": [
+        {
+          "frame_width": 320,
+          "client_width": 305,
+          "scroll_width": 305
+        },
+        {
+          "frame_width": 375,
+          "client_width": 375,
+          "scroll_width": 375
+        }
+      ],
+      "themes": [
+        "light",
+        "dark"
+      ]
+    },
+    {
+      "id": "B14",
+      "check": "Sampled console error filter for application origin",
+      "result": "no-entries",
+      "limitation": "Browser-extension metadata errors observed separately; this does not prove absence of all errors."
+    }
+  ],
+  "unmeasured": [
+    "Live AI/MCP",
+    "Production authenticated browser acceptance",
+    "Exhaustive device/browser combinations",
+    "Full accessibility conformance"
+  ]
+}

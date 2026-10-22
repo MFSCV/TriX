@@ -1,0 +1,1384 @@
+{
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema",
+    "planning_input"
+  ],
+  "properties": {
+    "schema": {
+      "const": "trix.environment-planning/v2"
+    },
+    "planning_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "mode",
+        "manager",
+        "fabric",
+        "offline",
+        "residency",
+        "operation",
+        "model",
+        "modelVersion",
+        "precision",
+        "memory",
+        "checkpoint",
+        "deterministic",
+        "groups",
+        "workflowEnabled",
+        "tasks",
+        "currency",
+        "utilization",
+        "sizing"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "\\S"
+        },
+        "mode": {
+          "enum": [
+            "independent",
+            "tensor",
+            "data"
+          ]
+        },
+        "manager": {
+          "enum": [
+            "standalone",
+            "kubernetes",
+            "slurm"
+          ]
+        },
+        "fabric": {
+          "enum": [
+            "ethernet",
+            "rdma",
+            "nvlink"
+          ]
+        },
+        "offline": {
+          "type": "boolean"
+        },
+        "residency": {
+          "enum": [
+            "local",
+            "approved"
+          ]
+        },
+        "operation": {
+          "enum": [
+            "inference",
+            "training",
+            "tools"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "modelVersion": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "precision": {
+          "enum": [
+            "fp32",
+            "fp16",
+            "bf16",
+            "int8",
+            "int4"
+          ]
+        },
+        "memory": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1048576
+        },
+        "checkpoint": {
+          "type": "boolean"
+        },
+        "deterministic": {
+          "type": "boolean"
+        },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "physicalArch",
+              "executionMode",
+              "devicesPerNode",
+              "cpuSockets",
+              "numaNodes",
+              "cpuFeatures",
+              "pcieGeneration",
+              "linkGbps",
+              "hostReserveGiB",
+              "deviceReserveGiB",
+              "hourlyCost",
+              "powerWatts",
+              "id",
+              "name",
+              "count",
+              "arch",
+              "os",
+              "vendor",
+              "device",
+              "backend",
+              "ram",
+              "vram",
+              "osVersion",
+              "abi",
+              "deviceModel",
+              "driver",
+              "backendVersion"
+            ],
+            "properties": {
+              "physicalArch": {
+                "enum": [
+                  "x86_64",
+                  "arm64",
+                  "x86",
+                  "riscv64",
+                  "ppc64le",
+                  "s390x",
+                  "wasm32"
+                ]
+              },
+              "executionMode": {
+                "enum": [
+                  "native",
+                  "virtualized",
+                  "emulated"
+                ]
+              },
+              "devicesPerNode": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              },
+              "cpuSockets": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              },
+              "numaNodes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              },
+              "cpuFeatures": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "pcieGeneration": {
+                "enum": [
+                  "unknown",
+                  "3",
+                  "4",
+                  "5",
+                  "6"
+                ]
+              },
+              "linkGbps": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10000000
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "hostReserveGiB": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1048576
+              },
+              "deviceReserveGiB": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1048576
+              },
+              "hourlyCost": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10000000
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "powerWatts": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10000000
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^group-[A-Za-z0-9_-]{1,100}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120,
+                "pattern": "\\S"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              },
+              "arch": {
+                "enum": [
+                  "x86_64",
+                  "arm64",
+                  "x86",
+                  "riscv64",
+                  "ppc64le",
+                  "s390x",
+                  "wasm32"
+                ]
+              },
+              "os": {
+                "enum": [
+                  "linux",
+                  "windows",
+                  "wsl2",
+                  "macos",
+                  "ios",
+                  "android",
+                  "browser",
+                  "freebsd"
+                ]
+              },
+              "vendor": {
+                "enum": [
+                  "amd",
+                  "intel",
+                  "apple",
+                  "qualcomm",
+                  "arm",
+                  "other"
+                ]
+              },
+              "device": {
+                "enum": [
+                  "cpu",
+                  "apple",
+                  "nvidia",
+                  "amd",
+                  "intel_gpu",
+                  "intel_npu",
+                  "qualcomm",
+                  "gaudi",
+                  "tpu",
+                  "neuron",
+                  "other"
+                ]
+              },
+              "backend": {
+                "enum": [
+                  "cpu",
+                  "onnx",
+                  "mlx",
+                  "coreml",
+                  "cuda",
+                  "rocm",
+                  "openvino",
+                  "directml",
+                  "qnn",
+                  "gaudi",
+                  "tpu",
+                  "neuron",
+                  "webgpu",
+                  "remote",
+                  "custom"
+                ]
+              },
+              "ram": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 1048576
+              },
+              "vram": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1048576
+              },
+              "osVersion": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "abi": {
+                "enum": [
+                  "gnu",
+                  "musl",
+                  "msvc",
+                  "darwin",
+                  "bionic",
+                  "wasm",
+                  "bsd"
+                ]
+              },
+              "deviceModel": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "driver": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "backendVersion": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              }
+            }
+          }
+        },
+        "workflowEnabled": {
+          "type": "boolean"
+        },
+        "tasks": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "groupId",
+              "dependencies",
+              "operation",
+              "model",
+              "modelVersion",
+              "precision",
+              "memory",
+              "inputType",
+              "outputType"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^task-[A-Za-z0-9_-]{1,100}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120,
+                "pattern": "\\S"
+              },
+              "groupId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 106
+              },
+              "dependencies": {
+                "type": "array",
+                "maxItems": 64,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 105
+                }
+              },
+              "operation": {
+                "enum": [
+                  "inference",
+                  "training",
+                  "tools"
+                ]
+              },
+              "model": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "modelVersion": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "precision": {
+                "enum": [
+                  "fp32",
+                  "fp16",
+                  "bf16",
+                  "int8",
+                  "int4"
+                ]
+              },
+              "memory": {
+                "type": "number",
+                "minimum": 0.000001,
+                "maximum": 1048576
+              },
+              "inputType": {
+                "enum": [
+                  "json",
+                  "tensor",
+                  "text",
+                  "artifact",
+                  "number"
+                ]
+              },
+              "outputType": {
+                "enum": [
+                  "json",
+                  "tensor",
+                  "text",
+                  "artifact",
+                  "number"
+                ]
+              }
+            }
+          }
+        },
+        "currency": {
+          "enum": [
+            "EUR",
+            "USD",
+            "GBP"
+          ]
+        },
+        "utilization": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "sizing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "parametersB",
+            "cacheGiB",
+            "overheadGiB",
+            "replicas"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "parametersB": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 100000
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "cacheGiB": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1048576
+            },
+            "overheadGiB": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1048576
+            },
+            "replicas": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1024
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TriX environment planning envelope v2",
+  "description": "Structural envelope only. Semantic compatibility, authority and hardware qualification require separate checks.",
+  "$defs": {
+    "planning_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "mode",
+        "manager",
+        "fabric",
+        "offline",
+        "residency",
+        "operation",
+        "model",
+        "modelVersion",
+        "precision",
+        "memory",
+        "checkpoint",
+        "deterministic",
+        "groups",
+        "workflowEnabled",
+        "tasks",
+        "currency",
+        "utilization",
+        "sizing"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "\\S"
+        },
+        "mode": {
+          "enum": [
+            "independent",
+            "tensor",
+            "data"
+          ]
+        },
+        "manager": {
+          "enum": [
+            "standalone",
+            "kubernetes",
+            "slurm"
+          ]
+        },
+        "fabric": {
+          "enum": [
+            "ethernet",
+            "rdma",
+            "nvlink"
+          ]
+        },
+        "offline": {
+          "type": "boolean"
+        },
+        "residency": {
+          "enum": [
+            "local",
+            "approved"
+          ]
+        },
+        "operation": {
+          "enum": [
+            "inference",
+            "training",
+            "tools"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "modelVersion": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "precision": {
+          "enum": [
+            "fp32",
+            "fp16",
+            "bf16",
+            "int8",
+            "int4"
+          ]
+        },
+        "memory": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1048576
+        },
+        "checkpoint": {
+          "type": "boolean"
+        },
+        "deterministic": {
+          "type": "boolean"
+        },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "physicalArch",
+              "executionMode",
+              "devicesPerNode",
+              "cpuSockets",
+              "numaNodes",
+              "cpuFeatures",
+              "pcieGeneration",
+              "linkGbps",
+              "hostReserveGiB",
+              "deviceReserveGiB",
+              "hourlyCost",
+              "powerWatts",
+              "id",
+              "name",
+              "count",
+              "arch",
+              "os",
+              "vendor",
+              "device",
+              "backend",
+              "ram",
+              "vram",
+              "osVersion",
+              "abi",
+              "deviceModel",
+              "driver",
+              "backendVersion"
+            ],
+            "properties": {
+              "physicalArch": {
+                "enum": [
+                  "x86_64",
+                  "arm64",
+                  "x86",
+                  "riscv64",
+                  "ppc64le",
+                  "s390x",
+                  "wasm32"
+                ]
+              },
+              "executionMode": {
+                "enum": [
+                  "native",
+                  "virtualized",
+                  "emulated"
+                ]
+              },
+              "devicesPerNode": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              },
+              "cpuSockets": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              },
+              "numaNodes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              },
+              "cpuFeatures": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "pcieGeneration": {
+                "enum": [
+                  "unknown",
+                  "3",
+                  "4",
+                  "5",
+                  "6"
+                ]
+              },
+              "linkGbps": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10000000
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "hostReserveGiB": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1048576
+              },
+              "deviceReserveGiB": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1048576
+              },
+              "hourlyCost": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10000000
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "powerWatts": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10000000
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^group-[A-Za-z0-9_-]{1,100}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120,
+                "pattern": "\\S"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1024
+              },
+              "arch": {
+                "enum": [
+                  "x86_64",
+                  "arm64",
+                  "x86",
+                  "riscv64",
+                  "ppc64le",
+                  "s390x",
+                  "wasm32"
+                ]
+              },
+              "os": {
+                "enum": [
+                  "linux",
+                  "windows",
+                  "wsl2",
+                  "macos",
+                  "ios",
+                  "android",
+                  "browser",
+                  "freebsd"
+                ]
+              },
+              "vendor": {
+                "enum": [
+                  "amd",
+                  "intel",
+                  "apple",
+                  "qualcomm",
+                  "arm",
+                  "other"
+                ]
+              },
+              "device": {
+                "enum": [
+                  "cpu",
+                  "apple",
+                  "nvidia",
+                  "amd",
+                  "intel_gpu",
+                  "intel_npu",
+                  "qualcomm",
+                  "gaudi",
+                  "tpu",
+                  "neuron",
+                  "other"
+                ]
+              },
+              "backend": {
+                "enum": [
+                  "cpu",
+                  "onnx",
+                  "mlx",
+                  "coreml",
+                  "cuda",
+                  "rocm",
+                  "openvino",
+                  "directml",
+                  "qnn",
+                  "gaudi",
+                  "tpu",
+                  "neuron",
+                  "webgpu",
+                  "remote",
+                  "custom"
+                ]
+              },
+              "ram": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 1048576
+              },
+              "vram": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1048576
+              },
+              "osVersion": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "abi": {
+                "enum": [
+                  "gnu",
+                  "musl",
+                  "msvc",
+                  "darwin",
+                  "bionic",
+                  "wasm",
+                  "bsd"
+                ]
+              },
+              "deviceModel": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "driver": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "backendVersion": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              }
+            }
+          }
+        },
+        "workflowEnabled": {
+          "type": "boolean"
+        },
+        "tasks": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "groupId",
+              "dependencies",
+              "operation",
+              "model",
+              "modelVersion",
+              "precision",
+              "memory",
+              "inputType",
+              "outputType"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^task-[A-Za-z0-9_-]{1,100}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120,
+                "pattern": "\\S"
+              },
+              "groupId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 106
+              },
+              "dependencies": {
+                "type": "array",
+                "maxItems": 64,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 105
+                }
+              },
+              "operation": {
+                "enum": [
+                  "inference",
+                  "training",
+                  "tools"
+                ]
+              },
+              "model": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "modelVersion": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 200
+              },
+              "precision": {
+                "enum": [
+                  "fp32",
+                  "fp16",
+                  "bf16",
+                  "int8",
+                  "int4"
+                ]
+              },
+              "memory": {
+                "type": "number",
+                "minimum": 0.000001,
+                "maximum": 1048576
+              },
+              "inputType": {
+                "enum": [
+                  "json",
+                  "tensor",
+                  "text",
+                  "artifact",
+                  "number"
+                ]
+              },
+              "outputType": {
+                "enum": [
+                  "json",
+                  "tensor",
+                  "text",
+                  "artifact",
+                  "number"
+                ]
+              }
+            }
+          }
+        },
+        "currency": {
+          "enum": [
+            "EUR",
+            "USD",
+            "GBP"
+          ]
+        },
+        "utilization": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "sizing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "parametersB",
+            "cacheGiB",
+            "overheadGiB",
+            "replicas"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "parametersB": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 100000
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "cacheGiB": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1048576
+            },
+            "overheadGiB": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1048576
+            },
+            "replicas": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1024
+            }
+          }
+        }
+      }
+    },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "physicalArch",
+        "executionMode",
+        "devicesPerNode",
+        "cpuSockets",
+        "numaNodes",
+        "cpuFeatures",
+        "pcieGeneration",
+        "linkGbps",
+        "hostReserveGiB",
+        "deviceReserveGiB",
+        "hourlyCost",
+        "powerWatts",
+        "id",
+        "name",
+        "count",
+        "arch",
+        "os",
+        "vendor",
+        "device",
+        "backend",
+        "ram",
+        "vram",
+        "osVersion",
+        "abi",
+        "deviceModel",
+        "driver",
+        "backendVersion"
+      ],
+      "properties": {
+        "physicalArch": {
+          "enum": [
+            "x86_64",
+            "arm64",
+            "x86",
+            "riscv64",
+            "ppc64le",
+            "s390x",
+            "wasm32"
+          ]
+        },
+        "executionMode": {
+          "enum": [
+            "native",
+            "virtualized",
+            "emulated"
+          ]
+        },
+        "devicesPerNode": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1024
+        },
+        "cpuSockets": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1024
+        },
+        "numaNodes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1024
+        },
+        "cpuFeatures": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "pcieGeneration": {
+          "enum": [
+            "unknown",
+            "3",
+            "4",
+            "5",
+            "6"
+          ]
+        },
+        "linkGbps": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hostReserveGiB": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1048576
+        },
+        "deviceReserveGiB": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1048576
+        },
+        "hourlyCost": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "powerWatts": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^group-[A-Za-z0-9_-]{1,100}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "\\S"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1024
+        },
+        "arch": {
+          "enum": [
+            "x86_64",
+            "arm64",
+            "x86",
+            "riscv64",
+            "ppc64le",
+            "s390x",
+            "wasm32"
+          ]
+        },
+        "os": {
+          "enum": [
+            "linux",
+            "windows",
+            "wsl2",
+            "macos",
+            "ios",
+            "android",
+            "browser",
+            "freebsd"
+          ]
+        },
+        "vendor": {
+          "enum": [
+            "amd",
+            "intel",
+            "apple",
+            "qualcomm",
+            "arm",
+            "other"
+          ]
+        },
+        "device": {
+          "enum": [
+            "cpu",
+            "apple",
+            "nvidia",
+            "amd",
+            "intel_gpu",
+            "intel_npu",
+            "qualcomm",
+            "gaudi",
+            "tpu",
+            "neuron",
+            "other"
+          ]
+        },
+        "backend": {
+          "enum": [
+            "cpu",
+            "onnx",
+            "mlx",
+            "coreml",
+            "cuda",
+            "rocm",
+            "openvino",
+            "directml",
+            "qnn",
+            "gaudi",
+            "tpu",
+            "neuron",
+            "webgpu",
+            "remote",
+            "custom"
+          ]
+        },
+        "ram": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 1048576
+        },
+        "vram": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1048576
+        },
+        "osVersion": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "abi": {
+          "enum": [
+            "gnu",
+            "musl",
+            "msvc",
+            "darwin",
+            "bionic",
+            "wasm",
+            "bsd"
+          ]
+        },
+        "deviceModel": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "driver": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "backendVersion": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "groupId",
+        "dependencies",
+        "operation",
+        "model",
+        "modelVersion",
+        "precision",
+        "memory",
+        "inputType",
+        "outputType"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^task-[A-Za-z0-9_-]{1,100}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "\\S"
+        },
+        "groupId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 106
+        },
+        "dependencies": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 105
+          }
+        },
+        "operation": {
+          "enum": [
+            "inference",
+            "training",
+            "tools"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "modelVersion": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "precision": {
+          "enum": [
+            "fp32",
+            "fp16",
+            "bf16",
+            "int8",
+            "int4"
+          ]
+        },
+        "memory": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1048576
+        },
+        "inputType": {
+          "enum": [
+            "json",
+            "tensor",
+            "text",
+            "artifact",
+            "number"
+          ]
+        },
+        "outputType": {
+          "enum": [
+            "json",
+            "tensor",
+            "text",
+            "artifact",
+            "number"
+          ]
+        }
+      }
+    }
+  }
+}

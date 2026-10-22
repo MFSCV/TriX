@@ -1,0 +1,2 @@
+import {executePlan} from './reference-plan.mjs';
+self.onmessage=({data})=>{if(data?.kind!=='run')return;self.postMessage({kind:'started',attemptId:data.attemptId});try{self.postMessage({kind:'result',attemptId:data.attemptId,result:executePlan(data.plan)});}catch(e){self.postMessage({kind:'result',attemptId:data.attemptId,result:{status:'FAILED',issues:[{code:'REFERENCE_ERROR',message:e.message}],trace:[],outputs:null}});}};

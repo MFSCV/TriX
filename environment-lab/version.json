@@ -1,0 +1,329 @@
+{
+  "schema": "trix.release/v1",
+  "version": "0.5.0",
+  "channel": "experimental",
+  "date": "2026-10-22",
+  "planningVersion": "0.2.0",
+  "standardRevision": "0.2",
+  "ruleset": "2026-10-22.2",
+  "status": "experimental; local planning verified; live orchestration qualification open",
+  "sourceBaseline": "1ad05932260dea02b119873ae11929f730cf9193",
+  "publicRepository": "https://github.com/MFSCV/TriX",
+  "documentation": "docs/README.md",
+  "audit": "docs/release-audit-v0.5.0.md",
+  "sourceFiles": [
+    {
+      "path": ".env.example",
+      "sha256": "9ac5a3e0fa271e0bae28626729efe9a2451c926cbc1ef04fda468c1f6d0dba9d"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "336c1375b3510650aaa96d31aff20238b5148c432fa14f16526d94911d3ce6e0"
+    },
+    {
+      "path": ".openai/hosting.example.json",
+      "sha256": "167b66909fb3779967c71e76857caff8656a8ca22c5f427b7fd2c57954a7610a"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "852c318c26d6dd3a1b0e6ec62519af64bed2743daa24df826ba2a658fb9cd0c5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "df08733e16fc7559d611087f335447afa2643427ac92b2492864b9e99fc4dc93"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "21b2428300044c433efe3d41c6f97d05ceb27ed60a453a85c24de290f12beeae"
+    },
+    {
+      "path": "docs/agent-integration.md",
+      "sha256": "0f958e47208ee9630602901b4ff3e77fa5487a859a3d7dbbb7f30fd3c8605302"
+    },
+    {
+      "path": "docs/agentic-ui-implementation.md",
+      "sha256": "5cba0efc6f20ff914b051392d46619d12bf824700728bd7a67f605731dddab73"
+    },
+    {
+      "path": "docs/implementation-baseline.md",
+      "sha256": "87a2e70b9212cb9e1059265be407b083c0974344fd046c6a444a11ec50f3bfb3"
+    },
+    {
+      "path": "docs/implementation-increment-v0.2.md",
+      "sha256": "035b5376505e6867507c8bfe0667fff71cba0da648bba26d0fc785835b64e710"
+    },
+    {
+      "path": "docs/orchestrator-runtime.md",
+      "sha256": "abb63f45ac157fa3dbb8e525bcedc2ab875438679b56fec33b5483bacab4de04"
+    },
+    {
+      "path": "docs/product-guide.md",
+      "sha256": "5909eb065d67026d2ce807e4a8fafb9c99f89301e98275e267cfb9e4c3b4463a"
+    },
+    {
+      "path": "docs/release-audit-v0.5.0.md",
+      "sha256": "6ee9880916ecaee888991a4865455cb56f29a5a8260627afd876a9c2f3b3717c"
+    },
+    {
+      "path": "docs/source-inventory.json",
+      "sha256": "602ec3194300126fe9ac84ea41080a5bedcba16b65d0cf6bc8e44336f64f5ea9"
+    },
+    {
+      "path": "docs/verification-ui-v0.3.md",
+      "sha256": "ec4ef3697cbafa60870018b44f50c3960b6e5c5e1ed73ce0d021010dbfd11c30"
+    },
+    {
+      "path": "docs/verification-ui-v0.4.md",
+      "sha256": "e13f977e4b3572f6dcb4a2d4b676703f4534d4ea25741771e787485f9d4af18b"
+    },
+    {
+      "path": "docs/verification.md",
+      "sha256": "f5e345fa01e302e7eafbb0357277cecb2713a5e4395b78bbce0ba808464f6e1e"
+    },
+    {
+      "path": "examples/environment-v2.json",
+      "sha256": "b7823d1892840231c27ef23c26f320df6b69762f44a8a9ca57035d5be71ae0a9"
+    },
+    {
+      "path": "examples/environment-v2.yaml",
+      "sha256": "6c6523c25f32f778787c4c3f1dd453ba9070561d8a4c89474addc20c0c772b6a"
+    },
+    {
+      "path": "examples/reference-cpu-plan.json",
+      "sha256": "b7b73914d5cfacd7b87c60848f358163a9bfe6ffc1363d25c175b8b37373e567"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a7a4a4587f77f39f6ccc1740f00afb404f58e3d3eabeefa3b7d7c1249a8db2ce"
+    },
+    {
+      "path": "public/adapters.mjs",
+      "sha256": "4388e54312a823e15368d5860f22d29595905f5a387f06d36f7505323e6f1e9a"
+    },
+    {
+      "path": "public/agents.mjs",
+      "sha256": "4ef6d979abdda7444455d1c685368011486c47e1ce740f29660460fd1902933a"
+    },
+    {
+      "path": "public/app.js",
+      "sha256": "408bdacbf0f5bf88d5d3ad033221c0576310de1da5c6015ceeb81675690ebcb8"
+    },
+    {
+      "path": "public/chat-layout.css",
+      "sha256": "57ab1bb8fa3da2cc879803aa65e7ce796203de57e8e52fd8d46b90c107e7a151"
+    },
+    {
+      "path": "public/chat.css",
+      "sha256": "67456629d3dff54a15b62c05d3e94808494588acf27f89a6e3b7c333ca24a6f0"
+    },
+    {
+      "path": "public/chat.mjs",
+      "sha256": "5fdbf610d002c6ff2ea62dcec078e81bddc04b4fd1a996c979478b815b8bac21"
+    },
+    {
+      "path": "public/compatibility.mjs",
+      "sha256": "639fc2628868c7a26a9627c11c7f64bc9344e1618b0b0acef60a6a3ec5c91c80"
+    },
+    {
+      "path": "public/contracts/adapter-profile.schema.json",
+      "sha256": "db63bfb5e9075e9b242e672d90fb2a46be9a8d41d8ed8ab20d6ca40eeba8fd67"
+    },
+    {
+      "path": "public/contracts/environment-v2.schema.json",
+      "sha256": "e4f1774b61b51ca9bc1509d277eff6d67f89d62f2cc97dc86a564950b2c3d860"
+    },
+    {
+      "path": "public/contracts/reference-plan.schema.json",
+      "sha256": "3b53e11d15ad14e1fe48893fcd4d5edd8259576658bb945d178301d7c28233a7"
+    },
+    {
+      "path": "public/conversation-store.mjs",
+      "sha256": "35f9907ca77175c823356e99df720a7170d5cc99486cfd27fab09da87487cc75"
+    },
+    {
+      "path": "public/cpu-worker.mjs",
+      "sha256": "5364aa360a9d9cf817f82383a70fadcafb121221b5523fb78771351a98fd9338"
+    },
+    {
+      "path": "public/downloads/TriX_Implementation_Increment_v0.2.0.zip",
+      "sha256": "5e312fa5fc9e3675f6c73954c755ce21a0e7117a6b56c9f099220191cae08cd6"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "e641e009eda8f8da2b186c9e6e601739d34fc95802633d74d03e50bdf8d7b212"
+    },
+    {
+      "path": "public/local-intent.mjs",
+      "sha256": "54223e60f9878678be0ec1143d64f80f81d585ccb72250398adbc94b645a3a18"
+    },
+    {
+      "path": "public/model.mjs",
+      "sha256": "32db6f883355507a9deace24544e937d51369f3c0c6fce77d76694082e2571dc"
+    },
+    {
+      "path": "public/product-info.mjs",
+      "sha256": "f16a2a06a7cc232916e30848ad9082fb862a1544aebe6ae131831ecf2d1cf860"
+    },
+    {
+      "path": "public/reference-plan.mjs",
+      "sha256": "7594954ae68ffab780bbacc2638b78da3127aedd87720387830b09e1abdd263f"
+    },
+    {
+      "path": "public/release.mjs",
+      "sha256": "435dd413eb6af5826308f70bdd5511e4f27dc81af9c1705f4c17ada432b0d682"
+    },
+    {
+      "path": "public/specialists.mjs",
+      "sha256": "3b4064f91febd2990bb80ec046d23886691105a006989b105e06883b38d5bb93"
+    },
+    {
+      "path": "public/storage.mjs",
+      "sha256": "20b845b354abbf0ff1c06d518334328134449cc48046c1e18637eeef8f08b509"
+    },
+    {
+      "path": "public/studio.html",
+      "sha256": "3722fdd3528ee83aeb31808f6b0faeecdd2caf6ff9b8fb3420ab87aaf94d8b40"
+    },
+    {
+      "path": "public/style.css",
+      "sha256": "9ed7adf08ff95d590d85de4ca4b28e101fe93eff765821c90bc0e2e1fab73c56"
+    },
+    {
+      "path": "public/task-store.mjs",
+      "sha256": "0db0f871d438eeb3cebc8423047f0ad9b14757d523e4003d8696f11c6c22ac40"
+    },
+    {
+      "path": "public/workspace-ui.mjs",
+      "sha256": "908a3bdf1f04c7a8078fbf246d3dbc4d3f0e050f6f50ec028a3e2cef9dd57d84"
+    },
+    {
+      "path": "public/workspace.css",
+      "sha256": "557202779333975c26dd16f036e62ec1f85e8e0c5e06e0e292351db1524ceeea"
+    },
+    {
+      "path": "repository/CURRENT_STATUS.md",
+      "sha256": "f12b0459dec577e05c880b6e188b35fad6d334258452fe99dea500d2dbc89119"
+    },
+    {
+      "path": "repository/README.md",
+      "sha256": "668bfa4c6ad8b86ea1a618535984e1e7a4a3387cfb2f82a8aade82b365fe01d7"
+    },
+    {
+      "path": "runtime/local-tools.mjs",
+      "sha256": "b70aa715167df8693308a8d531cf835644cd8b323c9137980e55262f4c42ac0c"
+    },
+    {
+      "path": "runtime/mcp.mjs",
+      "sha256": "e94354dfcb35e4d88383a1bdbe94ef9babe8513f156df31517715405e06714c4"
+    },
+    {
+      "path": "runtime/orchestrator.mjs",
+      "sha256": "2788959334d325b9e8def10b886a5a7f377585aafc95fab579c19dc874da6bf8"
+    },
+    {
+      "path": "runtime/policy.mjs",
+      "sha256": "2ee7cff7f8724e79d4b9d996d7ba0960b500ebc380b1cc59f49780cd84e321e5"
+    },
+    {
+      "path": "scripts/benchmark.mjs",
+      "sha256": "821a78d7c81d3c27627a8f5278cd2e58de0d61c85ffd7abb89ea88d9a5183f22"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "sha256": "dc6c5dec87d25e9c7b19ddb7ba5255121ef7ebe2ac4aacc65aceea586ff9121d"
+    },
+    {
+      "path": "scripts/check.mjs",
+      "sha256": "5929245c946006d5e8311e6c5519aceb8e9cf154da33b1b05189fd50c10be91b"
+    },
+    {
+      "path": "scripts/dev.mjs",
+      "sha256": "9da3084ecbfdc6b1a82ca93cbb9c950c3de3ed5f51954f1b8320cd67e2b5a159"
+    },
+    {
+      "path": "scripts/export-public.mjs",
+      "sha256": "8459cf2e7d033e8447091e9070eb333bb03370a6078f24d4ebfddf1b2e762031"
+    },
+    {
+      "path": "scripts/generate-contracts.mjs",
+      "sha256": "4c4f27ae89250414ddb0628a957566076d16e697c4c27e37f3257c29a3a0d5be"
+    },
+    {
+      "path": "scripts/release-manifest.mjs",
+      "sha256": "4231ca4d449c7f13f29a9b39a0c7d26ac25ed33bce77d36034837d67453ad930"
+    },
+    {
+      "path": "scripts/run-reference-plan.mjs",
+      "sha256": "cc4ee727c0d05bc798a6c47ac70e6b5eb23a439564f8ad42b3dcce6d922a3b49"
+    },
+    {
+      "path": "scripts/validate-artifact.mjs",
+      "sha256": "bd3c970a078cbbf30db6cfac52b4178fa8ab5252f742895fe7116d83c97494ce"
+    },
+    {
+      "path": "tests/agents.test.mjs",
+      "sha256": "0ec3a1942e848d0babaaf6f79cc9817f6211be1c00beb53ced6875e088fc9ee5"
+    },
+    {
+      "path": "tests/configurator.test.mjs",
+      "sha256": "59dfe67a1f7e8f615b044e6f2f9723ddbe601e12db8319ff41cafbf3b3d72584"
+    },
+    {
+      "path": "tests/fixtures/local-requests.json",
+      "sha256": "088400a2cad5a143f0477f8b8912bb5e8da561331e51c086ca71ac572ba24937"
+    },
+    {
+      "path": "tests/orchestrator.test.mjs",
+      "sha256": "a8dae01adb26b5d3262bc2c5d2fd9bf896320eda34c6c24ab57768b77b95adb5"
+    },
+    {
+      "path": "tests/product-guidance.test.mjs",
+      "sha256": "cf885e44c391b14f39213f7e8e0c6ef750ea496f314f7cef1803bd46177f8bac"
+    },
+    {
+      "path": "tests/task-workspace.test.mjs",
+      "sha256": "62979028e19d0a44247eecb16e1b4a58d613a1d8a87aac603902a64196825f25"
+    },
+    {
+      "path": "tests/v2.test.mjs",
+      "sha256": "638151fcf00bc49c22fc205b8f61d0c29083a1a333f57b22f7b7933dc5984cd8"
+    },
+    {
+      "path": "worker/index.js",
+      "sha256": "9ed34f4176201157f69d0a4d85c12da3db3b3b31216c0a7395716a398b672766"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "reports/test-results-v0.5.0.json",
+      "sha256": "6e5f48ce367feea73d9944057ba2d8584a1a2b40a1e4226e875112a33e69ebb8"
+    },
+    {
+      "path": "reports/benchmark-v0.5.0.json",
+      "sha256": "e814ea96aa5f2c5f029911c59b2489b41f1503e9acf1b8e5f8803b9232540353"
+    },
+    {
+      "path": "reports/baseline-v0.4.json",
+      "sha256": "1562533c220b5720261bbfe87a32e49bac7c01aa703d6f8158447f67ae872e76"
+    },
+    {
+      "path": "reports/routing-baseline-v0.4.json",
+      "sha256": "f6a1ff4bd781c2d5c17825af1688f1858ebbff2349e0fdb9346de4839564c2ca"
+    },
+    {
+      "path": "reports/audit-v0.5.0.json",
+      "sha256": "fd24f53f31288f36f470a53dc966b54223bc147ce861e34f30d83a2930e1d9e4"
+    },
+    {
+      "path": "reports/browser-v0.5.0.json",
+      "sha256": "3f77ad326b9e166be965453e39b7fe1605329c306d4c7ed26336be0118a4f766"
+    }
+  ],
+  "commitIdentity": "The containing Git commit identifies this release. Deployment and GitHub tracker link that commit; no self-referential commit hash is embedded.",
+  "unqualified": [
+    "Live model and MCP calls",
+    "Target implementation, audit independence and delivery",
+    "Physical accelerator/model backends",
+    "Production load, retention and recovery SLOs"
+  ]
+}

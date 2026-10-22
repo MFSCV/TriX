@@ -1,29 +1,25 @@
-# TriX agent integration increment — 22 October 2026
+# Agent integration status
 
-## Implemented scope
+Application 0.5.0 · Current implementation record. Supersedes this file’s earlier static-site status. See the [documentation index](README.md) and [runtime contract](orchestrator-runtime.md).
 
-This increment adds an English Agent workspace to the private configurator. Three deterministic local tools prepare profiles, validate compatibility and generate the existing planning envelope. The coordinator accepts a documented bounded command vocabulary. It does not call an LLM, execute code, install skills, inspect hardware or deploy workloads. Dialogue is session-memory only; applied scenarios use the existing browser-local persistence.
+TriX contains a bounded server-side orchestrator and nine specialist definitions. A configured model may delegate one assignment at a time to a separate specialist context. Specialists report only to the orchestrator. Enrolled MCP tools are checked against server-owned roles, purposes, fixed targets, revision requirements and task authority. Configuration does not establish a successful live call.
 
-Profiles are proposals until explicitly applied. Every proposal is tied to its base scenario; changes invalidate stale proposals. Existing compatibility validation remains authoritative, including blocking offline/remote combinations and preserving unresolved qualification conditions. Previous scenarios can be restored through the existing Undo action.
+The built-in tools validate the task’s captured environment, generate a configuration artifact and execute the pure CPU example. The browser retains deterministic local versions. The previous `agents.mjs` module still supports historical exact-command planning tools; it is not the model orchestrator and must not be used to infer general language reasoning.
 
-## Skills verification
+## Specialist contract
 
-The current development assistant exposes consolidate-preproduction and security-audit. Neither is installed as an executable skill in this static Site. The checkout contains no skill runner, model provider, shell executor, MCP broker or security workflow. SkillSpector was located as a separate DrClick integration archive; its content and TriX integration were not inspected. Ghidra, NemoClaw/OpenShell, AFOA and TensorRT-RTX are prior-discussion adapter candidates, not verified dependencies of this checkout. Their upstream versions and operational claims were not revalidated in this increment. The UI registry records these distinctions and grants no execution authority.
+`public/specialists.mjs` is the role catalogue. `runtime/policy.mjs` enforces external tool authority; a role card or model instruction cannot grant it. `runtime/orchestrator.mjs` exposes parent-only delegation, context reads, local tools, contextual surfaces, discovery and enrolled MCP calls. The model is not given arbitrary shell, filesystem or credential access.
 
-## Proposed next runtime contract
+Implementation clears prior test and audit gates. New test/audit/verification requests invalidate the previous corresponding verdict. A failed verdict cannot approve delivery. Deployment requires passing test and external audit receipts for the exact current revision; post-deployment verification is separate. Missing or uncertain external outcomes block automatic replay.
 
-General prompt/dialogue automation requires a server runtime. Preserve the separate TriX language boundary: dialogue produces a versioned typed task plan; semantic and capability validation precede execution. The prompt must never become an executable shell string.
+## Skills and optional integrations
 
-Use a single active control authority. Route project work through a TriX project coordinator, with narrowly scoped planner, compatibility, compiler/build, test/benchmark, documentation and security agents. Parent-routed communication and a separate audit path must prevent agents granting themselves authority. This is a proposed runtime design, not implemented multi-agent execution.
+Skills available to the authoring assistant, including documentation consolidation and security-audit guidance, are not automatically installed into TriX. This release has no general executable skill registry or admission runner. Third-party packages such as Ghidra, SkillSpector, NemoClaw/OpenShell, AFOA and inference toolkits remain separately scoped integration candidates unless actual TriX source, permissions and qualification evidence are supplied. Other projects’ archives or conversations do not establish a TriX installation.
 
-Each task needs task_id, project_id, actor_id, input_revision, intent, plan_schema_version, steps, dependencies, tool/skill version and content digest, capabilities, resource scope, data policy, time/token/cost limits, cancellation token, retry/idempotency policy and evidence requirements. Server-owned policy must validate every tool call; model output and skill text are untrusted proposals. Keep secrets server-side as references. Do not expose an arbitrary connector or shell proxy.
+The wider Global Coordinator / project orchestration / independently controlled Global Auditor programme remains a design dependency. The current project auditor is a model role able to request external reports; she is not a separately credentialed Global Auditor. No independent audit certification is claimed.
 
-Persist durable task transitions: received → clarifying → planned → authorized → running → succeeded/failed/cancelled. Resume must revalidate scenario revision and authorization. Retry read-only/idempotent work within declared limits; reconcile uncertain writes before retrying. Record actor, plan hash, tool inputs with secrets excluded, policy decision, result, timestamp and artifact digest. A browser transcript is not an immutable audit ledger.
+## Acceptance boundary
 
-Skill installation requires source provenance, license, pinned digest/version, declared tools/data/network needs, isolated validation, evaluation evidence and explicit activation policy. Registry states should distinguish discovered, inspected, validated, approved, active, quarantined and retired. Never promote state from a conversational claim or package existence.
+Deterministic tests exercise real local calculations and simulated model/MCP dispatch. Live provider reasoning, destination changes, independent audit provenance, native IDE integration, a general agent CLI, inbound MCP and unattended operation require their own adapters and evidence. The current CLI runs only the bounded CPU reference.
 
-## Acceptance and remaining gates
-
-Executed: 38 Node tests including six new agent tests, syntax validation, and existing compatibility cross-product coverage. These establish deterministic planning behavior only. Browser evidence is recorded separately in verification.md.
-
-Remaining: choose and authorize model/provider and credential path; implement authenticated server and scoped executor; connect actual skill packages; qualify sandbox and cancellation; test authorization, prompt injection, cross-project isolation, restart, retries and budget exhaustion; independently audit the runtime. No claim of autonomous end-to-end execution or completed security audit is made.
+Do not treat a generated artifact, a passing schema, a role definition, an authored skill or a deployment API acknowledgement as proof of completed end-to-end project implementation.

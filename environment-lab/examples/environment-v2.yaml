@@ -1,0 +1,442 @@
+schema: "trix.environment-planning/v2"
+specification_revision: "0.2"
+ruleset: "2026-10-22.2"
+generated_at: "2026-10-22T20:36:45.046Z"
+name: "TriX reference environment"
+evidence_status: "proposed"
+qualification: "not-qualified"
+notice: "Implementation planning only. Not the normative TriX plan IR. No hardware, runtime, model or driver qualification is claimed."
+language:
+  name: "TriX"
+  identity: "she/her"
+  documentation_language: "en"
+  frontend: "SDK-first; source grammar pending"
+components:
+  coordination_core: "Rust reference candidate; implementation language is not a conformance requirement"
+  adapters: "isolated processes; Python where appropriate"
+  apple_client: "Swift candidate"
+  interfaces:
+    - "platform"
+    - "accelerator discovery"
+    - "execution engine"
+    - "resource manager"
+    - "remote provider"
+  version_axes:
+    - "language"
+    - "plan"
+    - "protocol"
+    - "extension_api"
+    - "persistent_state"
+roles:
+  interaction: "web control client"
+  coordination: "authorised durable coordinator; deployment location must be chosen"
+  execution:
+    - "group-4"
+    - "group-5"
+deployment:
+  mode: "independent"
+  resource_manager: "standalone"
+  interconnect: "ethernet"
+  groups:
+    -
+      physicalArch: "arm64"
+      executionMode: "native"
+      devicesPerNode: 1
+      cpuSockets: 1
+      numaNodes: 1
+      cpuFeatures: ""
+      pcieGeneration: "unknown"
+      linkGbps: null
+      hostReserveGiB: 0
+      deviceReserveGiB: 0
+      hourlyCost: null
+      powerWatts: null
+      id: "group-4"
+      name: "Apple local"
+      count: 1
+      arch: "arm64"
+      os: "macos"
+      vendor: "apple"
+      device: "apple"
+      backend: "mlx"
+      ram: 128
+      vram: 128
+      osVersion: ""
+      abi: "darwin"
+      deviceModel: "Apple silicon"
+      driver: ""
+      backendVersion: ""
+      physical_architecture: "arm64"
+      process_architecture: "arm64"
+      capability_status: "declared"
+      version_status: "declared-unverified"
+    -
+      physicalArch: "x86_64"
+      executionMode: "native"
+      devicesPerNode: 1
+      cpuSockets: 1
+      numaNodes: 1
+      cpuFeatures: ""
+      pcieGeneration: "unknown"
+      linkGbps: null
+      hostReserveGiB: 0
+      deviceReserveGiB: 0
+      hourlyCost: null
+      powerWatts: null
+      id: "group-5"
+      name: "NVIDIA worker"
+      count: 1
+      arch: "x86_64"
+      os: "linux"
+      vendor: "amd"
+      device: "nvidia"
+      backend: "cuda"
+      ram: 128
+      vram: 96
+      osVersion: ""
+      abi: "gnu"
+      deviceModel: "NVIDIA GPU"
+      driver: ""
+      backendVersion: ""
+      physical_architecture: "x86_64"
+      process_architecture: "x86_64"
+      capability_status: "declared"
+      version_status: "declared-unverified"
+workload:
+  operation: "inference"
+  artifact: null
+  revision: null
+  precision: "fp16"
+  memory_gib_per_replica: 8
+  checkpoint_required: false
+  exact_reproduction_required: false
+policy:
+  offline: false
+  data_residency: "local"
+  credentials: "external secret references only"
+  authority: "deny unless explicitly granted"
+  remote_cost_ceiling: "required before remote execution"
+  audit: "independent protected evidence"
+  memory_pooling: false
+validation:
+  status: "conditional"
+  blocking_errors: 0
+  unresolved_gates:
+    -
+      code: "PINS_REQUIRED"
+      group: "group-4"
+      task: null
+      requirement: "PLT-001"
+      condition: "The exact software/device tuple is not fully pinned."
+      action: "Add OS, backend, device and driver versions. Evidence still requires physical tests."
+    -
+      code: "OPERATION_QUALIFICATION"
+      group: "group-4"
+      task: null
+      requirement: "INT-006"
+      condition: "The selected model, operation and fp16 precision have not been qualified on this backend."
+      action: "Verify operator coverage, conversion, quantization and numerical acceptance on representative hardware."
+    -
+      code: "PINS_REQUIRED"
+      group: "group-5"
+      task: null
+      requirement: "PLT-001"
+      condition: "The exact software/device tuple is not fully pinned."
+      action: "Add OS, backend, device and driver versions. Evidence still requires physical tests."
+    -
+      code: "OPERATION_QUALIFICATION"
+      group: "group-5"
+      task: null
+      requirement: "INT-006"
+      condition: "The selected model, operation and fp16 precision have not been qualified on this backend."
+      action: "Verify operator coverage, conversion, quantization and numerical acceptance on representative hardware."
+    -
+      code: "MODEL_PIN"
+      group: null
+      task: null
+      requirement: "INT-006"
+      condition: "Workload/model artifact identity is not pinned."
+      action: "Record artifact ID, revision/digest and operation coverage before qualification."
+    -
+      code: "VERSIONS_DECLARED"
+      group: "group-4"
+      task: null
+      requirement: "QUA-003"
+      condition: "Version fields are declarations; no upstream version tuple or physical support has been verified."
+      action: "Attach exact snapshot and operation-specific evidence. Nonempty fields do not qualify a target."
+    -
+      code: "VERSIONS_DECLARED"
+      group: "group-5"
+      task: null
+      requirement: "QUA-003"
+      condition: "Version fields are declarations; no upstream version tuple or physical support has been verified."
+      action: "Attach exact snapshot and operation-specific evidence. Nonempty fields do not qualify a target."
+qualification_gates:
+  - "Pin OS/kernel, ABI, physical/process ISA, device SKU, firmware/driver, engine, model and operation versions."
+  - "Verify admission, policy refusal, cancellation, restart and recovery on representative physical hardware."
+  - "Measure peak memory, numerical correctness, latency and failure behavior."
+  - "Qualify each distributed execution group; do not add memory across independent nodes."
+  - "Retain evidence, provenance and independent review before claiming support."
+implementation_sequence:
+  - "E0: adopt contracts, profile matrix and decision records"
+  - "E1: SDK, verifier, one CPU executor, durable state and refusal paths"
+  - "E2: authorized distributed reference and client API"
+  - "E3: third independent backend through the extension SDK"
+  - "E4: source grammar and source-to-plan equivalence"
+  - "E5: qualify additional platforms and optimizations"
+sources:
+  -
+    title: "TriX Design and Implementation Standard v0.2"
+    url: null
+  -
+    title: "NVIDIA CUDA · Linux installation"
+    url: "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html"
+  -
+    title: "AMD ROCm · compatibility matrix"
+    url: "https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html"
+  -
+    title: "Apple MLX · installation"
+    url: "https://ml-explore.github.io/mlx/build/html/install.html"
+  -
+    title: "OpenVINO · system requirements"
+    url: "https://docs.openvino.ai/2026/about-openvino/release-notes-openvino/system-requirements.html"
+  -
+    title: "ONNX Runtime · execution providers"
+    url: "https://onnxruntime.ai/docs/execution-providers/"
+  -
+    title: "NCCL · overview"
+    url: "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/overview.html"
+  -
+    title: "Kubernetes · nodes"
+    url: "https://kubernetes.io/docs/concepts/architecture/nodes/"
+  -
+    title: "Slurm · platforms"
+    url: "https://slurm.schedmd.com/platforms.html"
+  -
+    title: "JAX · installation"
+    url: "https://docs.jax.dev/en/latest/installation.html"
+  -
+    title: "AWS Neuron · documentation"
+    url: "https://awsdocs-neuron.readthedocs-hosted.com/en/latest/"
+  -
+    title: "Intel Gaudi · documentation"
+    url: "https://docs.habana.ai/en/latest/"
+planning_input:
+  name: "TriX reference environment"
+  mode: "independent"
+  manager: "standalone"
+  fabric: "ethernet"
+  offline: false
+  residency: "local"
+  operation: "inference"
+  model: ""
+  modelVersion: ""
+  precision: "fp16"
+  memory: 8
+  checkpoint: false
+  deterministic: false
+  groups:
+    -
+      physicalArch: "arm64"
+      executionMode: "native"
+      devicesPerNode: 1
+      cpuSockets: 1
+      numaNodes: 1
+      cpuFeatures: ""
+      pcieGeneration: "unknown"
+      linkGbps: null
+      hostReserveGiB: 0
+      deviceReserveGiB: 0
+      hourlyCost: null
+      powerWatts: null
+      id: "group-4"
+      name: "Apple local"
+      count: 1
+      arch: "arm64"
+      os: "macos"
+      vendor: "apple"
+      device: "apple"
+      backend: "mlx"
+      ram: 128
+      vram: 128
+      osVersion: ""
+      abi: "darwin"
+      deviceModel: "Apple silicon"
+      driver: ""
+      backendVersion: ""
+    -
+      physicalArch: "x86_64"
+      executionMode: "native"
+      devicesPerNode: 1
+      cpuSockets: 1
+      numaNodes: 1
+      cpuFeatures: ""
+      pcieGeneration: "unknown"
+      linkGbps: null
+      hostReserveGiB: 0
+      deviceReserveGiB: 0
+      hourlyCost: null
+      powerWatts: null
+      id: "group-5"
+      name: "NVIDIA worker"
+      count: 1
+      arch: "x86_64"
+      os: "linux"
+      vendor: "amd"
+      device: "nvidia"
+      backend: "cuda"
+      ram: 128
+      vram: 96
+      osVersion: ""
+      abi: "gnu"
+      deviceModel: "NVIDIA GPU"
+      driver: ""
+      backendVersion: ""
+  workflowEnabled: false
+  tasks: []
+  currency: "EUR"
+  utilization: 1
+  sizing:
+    enabled: false
+    parametersB: null
+    cacheGiB: 0
+    overheadGiB: 0
+    replicas: 1
+application_version: "0.2.0"
+workflow: null
+estimates:
+  memory:
+    known: false
+    reason: "Supply a parameter count to estimate memory."
+  cost:
+    currency: "EUR"
+    hourly: null
+    kwhPerDay: null
+    utilization: 1
+    basis: "User-declared whole-node hourly cost; energy assumes linear utilization and excludes unlisted network/cooling equipment. No market prices or performance measurements."
+qualification_manifest:
+  schema: "trix.qualification-checklist/v1"
+  status: "not-run"
+  profile_snapshot:
+    name: "TriX reference environment"
+    mode: "independent"
+    manager: "standalone"
+    fabric: "ethernet"
+    offline: false
+    residency: "local"
+    operation: "inference"
+    model: ""
+    modelVersion: ""
+    precision: "fp16"
+    memory: 8
+    checkpoint: false
+    deterministic: false
+    groups:
+      -
+        physicalArch: "arm64"
+        executionMode: "native"
+        devicesPerNode: 1
+        cpuSockets: 1
+        numaNodes: 1
+        cpuFeatures: ""
+        pcieGeneration: "unknown"
+        linkGbps: null
+        hostReserveGiB: 0
+        deviceReserveGiB: 0
+        hourlyCost: null
+        powerWatts: null
+        id: "group-4"
+        name: "Apple local"
+        count: 1
+        arch: "arm64"
+        os: "macos"
+        vendor: "apple"
+        device: "apple"
+        backend: "mlx"
+        ram: 128
+        vram: 128
+        osVersion: ""
+        abi: "darwin"
+        deviceModel: "Apple silicon"
+        driver: ""
+        backendVersion: ""
+      -
+        physicalArch: "x86_64"
+        executionMode: "native"
+        devicesPerNode: 1
+        cpuSockets: 1
+        numaNodes: 1
+        cpuFeatures: ""
+        pcieGeneration: "unknown"
+        linkGbps: null
+        hostReserveGiB: 0
+        deviceReserveGiB: 0
+        hourlyCost: null
+        powerWatts: null
+        id: "group-5"
+        name: "NVIDIA worker"
+        count: 1
+        arch: "x86_64"
+        os: "linux"
+        vendor: "amd"
+        device: "nvidia"
+        backend: "cuda"
+        ram: 128
+        vram: 96
+        osVersion: ""
+        abi: "gnu"
+        deviceModel: "NVIDIA GPU"
+        driver: ""
+        backendVersion: ""
+    workflowEnabled: false
+    tasks: []
+    currency: "EUR"
+    utilization: 1
+    sizing:
+      enabled: false
+      parametersB: null
+      cacheGiB: 0
+      overheadGiB: 0
+      replicas: 1
+  reviewer: null
+  evidence: []
+  mandatory_checks:
+    -
+      id: "Q-01"
+      requirement: "QUA-003"
+      check: "Measure exact physical/process hardware and software tuple"
+      outcome: "not-run"
+    -
+      id: "Q-02"
+      requirement: "INT-006"
+      check: "Verify operation/model/precision and numerical criteria"
+      outcome: "not-run"
+    -
+      id: "Q-03"
+      requirement: "RUN-007"
+      check: "Verify authority, resource admission and fencing"
+      outcome: "not-run"
+    -
+      id: "Q-04"
+      requirement: "QUA-004"
+      check: "Set and measure latency, throughput, memory, cost and recovery gates"
+      outcome: "not-run"
+    -
+      id: "Q-05"
+      requirement: "QUA-017"
+      check: "Exercise restart, cancellation, update and restore"
+      outcome: "not-run"
+    -
+      id: "Q-06"
+      requirement: "QUA-012"
+      check: "Independent review of evidence before qualification"
+      outcome: "not-run"
+  invalidation_triggers:
+    - "hardware"
+    - "OS/ABI"
+    - "driver/firmware"
+    - "engine/dependency"
+    - "model/precision"
+    - "policy"
+    - "topology"
+  notice: "A checklist or imported evidence is not a qualification verdict."

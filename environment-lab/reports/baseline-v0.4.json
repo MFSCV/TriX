@@ -1,0 +1,32 @@
+{
+  "schema": "trix.benchmark/v1",
+  "stage": "baseline",
+  "source": "1ad05932260dea02b119873ae11929f730cf9193",
+  "node": "v24.19.0",
+  "platform": "linux",
+  "arch": "x64",
+  "scope": "Warm deterministic tools in this container; no live model, MCP or target deployment",
+  "results": [
+    {
+      "name": "environment.validate",
+      "samples": 300,
+      "p50_ms": 0.024636999999998466,
+      "p95_ms": 0.14118899999999712,
+      "max_ms": 3.672145999999998
+    },
+    {
+      "name": "environment.generate",
+      "samples": 300,
+      "p50_ms": 0.04166100000000483,
+      "p95_ms": 0.17682199999998716,
+      "max_ms": 1.3268790000000195
+    },
+    {
+      "name": "reference.execute",
+      "samples": 300,
+      "p50_ms": 0.015181999999981599,
+      "p95_ms": 0.03249800000000391,
+      "max_ms": 0.24596299999998905
+    }
+  ]
+}
