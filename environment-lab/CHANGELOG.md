@@ -22,3 +22,9 @@ Previous task/dashboard workspace, local proposals, artifacts and browser CPU wo
 ## 0.2.0 · 22 October 2026
 
 Planning schema v2, physical/process architecture distinctions, workflow contracts, migration, estimates, qualification conditions and bounded CPU reference/CLI. Planning-engine version remains 0.2.0 in application 0.5.0.
+
+### 0.5.0 activation follow-up · 22 October 2026
+
+- Enrolled the official public OpenAI documentation MCP server with two read-only specialist tools; recorded real discovery/search/fetch checks.
+- Verified the same bounded CPU source on Windows/Node 24.22.0, returning 50 with a matching source hash.
+- Added the activation record and opt-in live probe. Model credentials, project executors and independent audit enrollment remain prerequisites.

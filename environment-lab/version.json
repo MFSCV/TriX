@@ -26,15 +26,19 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "852c318c26d6dd3a1b0e6ec62519af64bed2743daa24df826ba2a658fb9cd0c5"
+      "sha256": "16b3dc6c7c3e54996e9be7e251a0379068124f7e78e9a5b1eb9bd76f0e1d37aa"
     },
     {
       "path": "README.md",
-      "sha256": "df08733e16fc7559d611087f335447afa2643427ac92b2492864b9e99fc4dc93"
+      "sha256": "a89bf8c8131bcfe9efac1e21b5691cba04e05ecee79c04092206234b9615bd23"
     },
     {
       "path": "docs/README.md",
-      "sha256": "21b2428300044c433efe3d41c6f97d05ceb27ed60a453a85c24de290f12beeae"
+      "sha256": "0825e1ff15ef877c9373e2c09160e6db31f7e80b392abfadbbfe311bf90a1439"
+    },
+    {
+      "path": "docs/activation-status.md",
+      "sha256": "fe9bb42e0f701100ebce652d6478ac9ec77838e32f7b62af47379181af41bfac"
     },
     {
       "path": "docs/agent-integration.md",
@@ -58,7 +62,7 @@
     },
     {
       "path": "docs/product-guide.md",
-      "sha256": "5909eb065d67026d2ce807e4a8fafb9c99f89301e98275e267cfb9e4c3b4463a"
+      "sha256": "2a88174ed4f86bb36e3c68b77bdf64bf03762df9758d67210e8460ab70e482b8"
     },
     {
       "path": "docs/release-audit-v0.5.0.md",
@@ -66,7 +70,7 @@
     },
     {
       "path": "docs/source-inventory.json",
-      "sha256": "602ec3194300126fe9ac84ea41080a5bedcba16b65d0cf6bc8e44336f64f5ea9"
+      "sha256": "4a0d51068161062279bb2585f950dfb88d429a43d29c7b3e1ede25696131b252"
     },
     {
       "path": "docs/verification-ui-v0.3.md",
@@ -87,6 +91,10 @@
     {
       "path": "examples/environment-v2.yaml",
       "sha256": "6c6523c25f32f778787c4c3f1dd453ba9070561d8a4c89474addc20c0c772b6a"
+    },
+    {
+      "path": "examples/mcp-openai-docs.json",
+      "sha256": "456362a0a300bbce935d8bad8b426ad268fe5c46faddb3be7b5adcc35cc365f7"
     },
     {
       "path": "examples/reference-cpu-plan.json",
@@ -206,7 +214,7 @@
     },
     {
       "path": "repository/README.md",
-      "sha256": "668bfa4c6ad8b86ea1a618535984e1e7a4a3387cfb2f82a8aade82b365fe01d7"
+      "sha256": "fe37457eca39da6fae609bbbfbab89e95ef01d1ab4c51f2df9f1aeb3ec724c20"
     },
     {
       "path": "runtime/local-tools.mjs",
@@ -233,8 +241,12 @@
       "sha256": "dc6c5dec87d25e9c7b19ddb7ba5255121ef7ebe2ac4aacc65aceea586ff9121d"
     },
     {
+      "path": "scripts/check-public-mcp.mjs",
+      "sha256": "5b7029ceff62eb4cffe67cba8e679f1b78d016f0899ca7ebc0b36171c02474e1"
+    },
+    {
       "path": "scripts/check.mjs",
-      "sha256": "5929245c946006d5e8311e6c5519aceb8e9cf154da33b1b05189fd50c10be91b"
+      "sha256": "d195ae01a62ae2aa13f259b886c207a9d7acc27784eddc36282c76b3b7123437"
     },
     {
       "path": "scripts/dev.mjs",
@@ -250,7 +262,7 @@
     },
     {
       "path": "scripts/release-manifest.mjs",
-      "sha256": "4231ca4d449c7f13f29a9b39a0c7d26ac25ed33bce77d36034837d67453ad930"
+      "sha256": "e97bc7739f77491ab3421fb48f29ce6f1e9752eafbbe50992d967228055b650b"
     },
     {
       "path": "scripts/run-reference-plan.mjs",
@@ -296,7 +308,7 @@
   "evidence": [
     {
       "path": "reports/test-results-v0.5.0.json",
-      "sha256": "6e5f48ce367feea73d9944057ba2d8584a1a2b40a1e4226e875112a33e69ebb8"
+      "sha256": "869cc107e7d0873dd2a6b270685f0a0bd886e6d67483b7c836cb7c23e8c10e35"
     },
     {
       "path": "reports/benchmark-v0.5.0.json",
@@ -317,6 +329,10 @@
     {
       "path": "reports/browser-v0.5.0.json",
       "sha256": "3f77ad326b9e166be965453e39b7fe1605329c306d4c7ed26336be0118a4f766"
+    },
+    {
+      "path": "reports/live-public-mcp-v0.5.0.json",
+      "sha256": "f96440b65486b69e2947b429c47115930956b3a3c86b51c66a09f36d2987270b"
     }
   ],
   "commitIdentity": "The containing Git commit identifies this release. Deployment and GitHub tracker link that commit; no self-referential commit hash is embedded.",

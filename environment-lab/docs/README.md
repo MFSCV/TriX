@@ -10,6 +10,7 @@ TriX has two related scopes: a proposed portable language and execution-contract
 | --- | --- |
 | [Product and user guide](product-guide.md) | Current purpose, capabilities, screen explanations, journeys and terminology |
 | [Implementation baseline](implementation-baseline.md) | Current architecture, data boundaries, requirements, decisions, open gaps and acceptance mapping |
+| [Live activation status](activation-status.md) | Observed connections, real MCP/Windows checks and prerequisites still missing |
 | [Runtime and activation](orchestrator-runtime.md) | Model/MCP setup, specialist enforcement, provider receipts, limits and recovery |
 | [Release audit](release-audit-v0.5.0.md) | Findings, fixes, evidence and remaining verification limits for this release |
 | [Version tracker](../version.json) | Machine-readable release identity and evidence paths |

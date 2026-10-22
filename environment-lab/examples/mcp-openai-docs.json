@@ -1,0 +1,11 @@
+[
+  {
+    "id": "openai-docs",
+    "name": "OpenAI documentation",
+    "url": "https://developers.openai.com/mcp",
+    "tools": [
+      {"name":"search_openai_docs","purpose":"read","roles":["requirements","architect","integrations","implementer","tester","security","auditor","release","documentation"]},
+      {"name":"fetch_openai_doc","purpose":"read","roles":["requirements","architect","integrations","implementer","tester","security","auditor","release","documentation"]}
+    ]
+  }
+]

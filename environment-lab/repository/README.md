@@ -2,7 +2,7 @@
 
 TriX is a proposed portable language and execution-contract programme for describing work across hardware architectures, operating systems and model/runtime backends. She separates intent and constraints from the adapters that execute them.
 
-The current **TriX application 0.5.0** provides a conversational planning workspace: describe hardware, runtimes and workload constraints, check compatibility, compare alternatives, export a portable configuration and inspect execution evidence. Her experimental orchestrator can delegate implementation, tests, audit and delivery when a model and scoped MCP tools are configured. Live integrations are not configured or qualified in this release.
+The current **TriX application 0.5.0** provides a conversational planning workspace: describe hardware, runtimes and workload constraints, check compatibility, compare alternatives, export a portable configuration and inspect execution evidence. Her experimental orchestrator can delegate implementation, tests, audit and delivery when a model and scoped MCP tools are configured. Model inference and external target implementation are not activated or qualified; the [activation record](environment-lab/docs/activation-status.md) tracks actual connection progress.
 
 ## Find the right starting point
 

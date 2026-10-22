@@ -13,7 +13,7 @@ TriX helps plan where AI models, tools and data-processing tasks run: describe h
 | AI plus enrolled MCP tools and task authority | Request implementation, tests, external audit, delivery and verification within fixed target bindings | Actual execution needs provider receipts. Tests and audit must pass for the exact revision before deployment |
 | Roadmap | Complete language/compiler, general agent CLI, native IDE operation, inbound MCP, hardware qualification and unattended workers | Separate implementation and qualification milestones; not enabled by the current UI |
 
-The hosted application currently has no configured model or MCP servers. She therefore displays **Local tools**. The OpenAI adapter is one experimental integration, not a requirement that the future language use an exclusive provider. Inbound and outbound MCP are separate capabilities; this release implements only the bounded outbound adapter for protocol 2025-11-25.
+Capability depends on the server configuration. **Local tools** means model-powered delegation is unavailable. Inspect Connections for enrolled tools and the [activation record](activation-status.md) for the latest observed setup. A knowledge MCP connection alone does not enable implementation or model inference. The OpenAI adapter is one experimental integration, not a requirement that the future language use an exclusive provider. Inbound and outbound MCP are separate capabilities; this release implements only the bounded outbound adapter for protocol 2025-11-25.
 
 ## Start on the opening screen
 

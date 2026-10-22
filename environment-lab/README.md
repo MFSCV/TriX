@@ -6,7 +6,7 @@ The application is part of a broader proposed portable language and execution-co
 
 ## Start here
 
-Read the [documentation index](docs/README.md), [product guide](docs/product-guide.md), [implementation baseline](docs/implementation-baseline.md) and [runtime/activation contract](docs/orchestrator-runtime.md). The [release audit](docs/release-audit-v0.5.0.md), [version tracker](version.json) and [change log](CHANGELOG.md) distinguish current evidence from the historical specification packs.
+Read the [documentation index](docs/README.md), [product guide](docs/product-guide.md), [implementation baseline](docs/implementation-baseline.md) and [runtime/activation contract](docs/orchestrator-runtime.md). The [activation status](docs/activation-status.md), [release audit](docs/release-audit-v0.5.0.md), [version tracker](version.json) and [change log](CHANGELOG.md) distinguish current evidence from the historical specification packs.
 
 | Available now | Requires configured and verified integrations |
 | --- | --- |
@@ -45,6 +45,6 @@ The optional state argument explicitly authorizes the named checkpoint and sibli
 
 A response is not an implementation. A planning pass is not physical hardware qualification. A hash identifies content but does not authenticate its producer. A model review is not independent audit approval. A deployment receipt is separate from verified application behaviour.
 
-Benchmarks report sample size, environment and scope. No live model latency, TTFT, real MCP/target output, production SLO, independent security certification or complete accessibility conformance is claimed. See the open gaps and current evidence before enabling live operations.
+Benchmarks report sample size, environment and scope. No live model latency, TTFT, target implementation output, production SLO, independent security certification or complete accessibility conformance is claimed. See the open gaps and current evidence before enabling live operations.
 
 Existing owner-private hosting remains private. The public source export excludes its Site identity, credentials, user records, generated deployment bundles and browser screenshots. Public source does not change the running application’s audience.

@@ -1,7 +1,7 @@
 {
   "schema": "trix.check-results/v1",
   "version": "0.5.0",
-  "created_at": "2026-10-22T22:46:00.871Z",
+  "created_at": "2026-10-22T22:55:51.515Z",
   "environment": {
     "node": "v24.19.0",
     "platform": "linux"
@@ -19,62 +19,62 @@
     {
       "name": "syntax: public/chat.mjs",
       "status": "passed",
-      "duration_ms": 113.367
+      "duration_ms": 135.322
     },
     {
       "name": "syntax: public/app.js",
       "status": "passed",
-      "duration_ms": 86.804
+      "duration_ms": 84.634
     },
     {
       "name": "syntax: public/workspace-ui.mjs",
       "status": "passed",
-      "duration_ms": 115.017
+      "duration_ms": 76.512
     },
     {
       "name": "syntax: public/task-store.mjs",
       "status": "passed",
-      "duration_ms": 91.923
+      "duration_ms": 66.496
     },
     {
       "name": "syntax: public/conversation-store.mjs",
       "status": "passed",
-      "duration_ms": 74.53
+      "duration_ms": 77.013
     },
     {
       "name": "syntax: public/local-intent.mjs",
       "status": "passed",
-      "duration_ms": 86.288
+      "duration_ms": 77.364
     },
     {
       "name": "syntax: public/product-info.mjs",
       "status": "passed",
-      "duration_ms": 122.544
+      "duration_ms": 108.809
     },
     {
       "name": "syntax: worker/index.js",
       "status": "passed",
-      "duration_ms": 71.842
+      "duration_ms": 68.389
     },
     {
       "name": "regression",
       "status": "passed",
-      "duration_ms": 1620.589
+      "duration_ms": 1510.672
     },
     {
       "name": "build",
       "status": "passed",
-      "duration_ms": 159.384
+      "duration_ms": 100.48
     },
     {
       "name": "worker artifact",
       "status": "passed",
-      "duration_ms": 257.072
+      "duration_ms": 116.311
     },
     {
       "name": "current documentation relative links",
       "status": "passed",
-      "links": 35
+      "links": 39
     }
   ],
   "testFiles": [

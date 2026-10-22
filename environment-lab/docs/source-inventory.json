@@ -172,6 +172,14 @@
       "access": "all 265 text lines read",
       "authority": "proposed connection baseline",
       "treatment": "Proposal scope distinguished from implemented adapter."
+    },
+    {
+      "id": "REV-SRC-021",
+      "title": "Owner activation follow-up: install/use necessary skills, plugins and resources",
+      "authority": "accepted user direction",
+      "date": "2026-10-22",
+      "access": "conversation plus observed plugin state, runtime configuration and live public MCP/Windows checks",
+      "scope": "activation prerequisites and observed partial activation; no model/executor success inferred"
     }
   ]
 }

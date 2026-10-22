@@ -1,0 +1,33 @@
+{
+  "schema": "trix.live-public-mcp-check/v1",
+  "version": "0.5.0",
+  "created_at": "2026-10-22T22:55:12.158Z",
+  "node": "v24.19.0",
+  "server": "https://developers.openai.com/mcp",
+  "grantedTools": [
+    "search_openai_docs",
+    "fetch_openai_doc"
+  ],
+  "samples": 1,
+  "scope": "Live public read-only documentation server through the production MCP adapter, from this container. No model, private data, target implementation or independent audit is tested. Timings include session initialization/discovery/call/cleanup as applicable; no production SLO is inferred.",
+  "checks": [
+    {
+      "name": "tools/list",
+      "status": "passed",
+      "duration_ms": 12241.321,
+      "serialized_sha256": "1bd439245417d99fe5d10268c60c2a428a2f955e3de51cbb98da1c6cb6fbfdbc"
+    },
+    {
+      "name": "search_openai_docs",
+      "status": "passed",
+      "duration_ms": 17237.442,
+      "serialized_sha256": "139ec8ac6ae8fd5cc493da7fc5e6d8a38c16eddb2402edcfa227bb2af50f259d"
+    },
+    {
+      "name": "fetch_openai_doc",
+      "status": "passed",
+      "duration_ms": 16773.632,
+      "serialized_sha256": "028a73c2a0d38a220ae3ea7a508296857c472858a31d15edb17def1d55d544e5"
+    }
+  ]
+}
