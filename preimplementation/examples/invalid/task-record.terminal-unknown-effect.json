@@ -1,0 +1,69 @@
+{
+  "schema_id": "trix.task-record",
+  "schema_version": "0.2",
+  "tenant_id": "example-tenant",
+  "project_id": "example-project",
+  "principal_id": "example-principal",
+  "workflow_id": "example-workflow",
+  "task_id": "example-task",
+  "task_version": "4",
+  "controller_epoch": "1",
+  "plan_ref": "planref:example-plan",
+  "input_revision_ref": "revision:example-inputs",
+  "policy_ref": "policy:example-policy",
+  "authority_refs": [
+    "authref:example-grant"
+  ],
+  "recorded_at": "2000-01-01T00:01:00Z",
+  "lifecycle": "SUCCEEDED",
+  "attempt": {
+    "attempt_id": "example-attempt-1",
+    "execution": "ACTIVE",
+    "knowledge": "STALE",
+    "observed_at": "2000-01-01T00:00:10Z",
+    "source_ref": "observer:example-executor",
+    "evidence_refs": [
+      "evidence:example-last-observation"
+    ]
+  },
+  "cancellation": {
+    "requested": false,
+    "intent_ref": null,
+    "disposition": "NOT_REQUESTED",
+    "evidence_refs": []
+  },
+  "effects": [
+    {
+      "effect_id": "example-effect-1",
+      "destination_ref": "destination:example-local",
+      "payload_ref": "payload:example-write",
+      "authority_ref": "authref:example-grant",
+      "outcome": "UNKNOWN",
+      "evidence_refs": [
+        "evidence:example-dispatch-intent"
+      ]
+    }
+  ],
+  "outputs": [],
+  "terminal_decision": {
+    "status": "CURRENT",
+    "evidence_refs": [
+      "evidence:example-terminal-claim"
+    ],
+    "reliance_blocked": false
+  },
+  "last_event": {
+    "event_id": "example-event-4",
+    "actor_ref": "principal:example-coordinator",
+    "controller_epoch": "1",
+    "causal_refs": [
+      "event:example-event-3"
+    ],
+    "evidence_refs": [
+      "evidence:example-reconciliation-entry"
+    ]
+  },
+  "metadata": {
+    "org.trix.example": "Illustrative proposed record only. No task ran, authority was verified, or platform was qualified."
+  }
+}

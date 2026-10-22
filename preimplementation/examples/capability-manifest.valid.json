@@ -1,0 +1,67 @@
+{
+  "schema_id": "trix.capability-manifest",
+  "schema_version": "0.2",
+  "manifest_id": "example-manifest",
+  "node_id": "example-node",
+  "issuer_ref": "principal:example-issuer",
+  "issued_at": "2000-01-01T00:00:00Z",
+  "valid_until": "2000-01-01T01:00:00Z",
+  "roles": [
+    "EXECUTOR"
+  ],
+  "platform": {
+    "vendor": "example-vendor",
+    "architecture": "x86_64",
+    "os": "linux",
+    "os_version": "example-os-version",
+    "abi": "example-abi",
+    "device_refs": [
+      "device:example-cpu"
+    ]
+  },
+  "versions": {
+    "product": "0.0.0-example",
+    "runtime": "0.0.0-example",
+    "language_contract": "0.2-proposal",
+    "api": "0.2-proposal",
+    "adapters": [
+      {
+        "adapter_ref": "adapter:example-cpu",
+        "version": "0.0.0-example"
+      }
+    ],
+    "drivers": []
+  },
+  "availability": {
+    "state": "NOT_ASSERTED",
+    "observed_at": null,
+    "evidence_refs": [],
+    "constraints": [
+      "This fictional declaration is not evidence of an available executor."
+    ]
+  },
+  "capabilities": [
+    {
+      "capability_ref": "capability:example-cpu-digest",
+      "operation_refs": [
+        "operation:example-digest"
+      ],
+      "scope": {
+        "target_profile_ref": "profile:example-cpu",
+        "device_refs": [
+          "device:example-cpu"
+        ],
+        "software_snapshot_ref": "snapshot:example-unimplemented",
+        "model_refs": []
+      },
+      "claim_status": "DECLARED",
+      "evidence_refs": [],
+      "limitations": [
+        "No hardware observation or qualification has been performed."
+      ]
+    }
+  ],
+  "metadata": {
+    "org.trix.example": "Illustrative proposed record only. No task ran, authority was verified, or platform was qualified."
+  }
+}

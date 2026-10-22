@@ -1,0 +1,22 @@
+# Local environments and dependencies
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local credentials and private hosting state
+.env
+.env.*
+*.pem
+*.key
+.openai/
+
+# Local runtime and editor output
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.verification-package/

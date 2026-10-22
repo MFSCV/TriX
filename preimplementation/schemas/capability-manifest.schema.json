@@ -1,0 +1,485 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trix:proposed:schema:capability-manifest:0.2",
+  "title": "TriX 0.2 proposed capability manifest",
+  "description": "A scoped declaration or observation of platform capabilities. Evidence references are not authenticated or inspected by this schema; qualification must be separately established for the named scope.",
+  "$comment": "Proposed TriX 0.2 companion contract. Structural validity is not implementation, authorization, compatibility, qualification or runtime evidence. This is not the complete TriX IR.",
+  "type": "object",
+  "properties": {
+    "schema_id": {
+      "const": "trix.capability-manifest"
+    },
+    "schema_version": {
+      "const": "0.2"
+    },
+    "manifest_id": {
+      "$ref": "#/$defs/id"
+    },
+    "node_id": {
+      "$ref": "#/$defs/id"
+    },
+    "issuer_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "issued_at": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "valid_until": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "CLIENT",
+          "COORDINATOR",
+          "EXECUTOR",
+          "AUDITOR",
+          "STORAGE"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 5,
+      "uniqueItems": true
+    },
+    "platform": {
+      "type": "object",
+      "properties": {
+        "vendor": {
+          "$ref": "#/$defs/id"
+        },
+        "architecture": {
+          "$ref": "#/$defs/id"
+        },
+        "os": {
+          "$ref": "#/$defs/id"
+        },
+        "os_version": {
+          "$ref": "#/$defs/id"
+        },
+        "abi": {
+          "$ref": "#/$defs/id"
+        },
+        "device_refs": {
+          "$ref": "#/$defs/refs"
+        }
+      },
+      "required": [
+        "vendor",
+        "architecture",
+        "os",
+        "os_version",
+        "abi",
+        "device_refs"
+      ],
+      "additionalProperties": false
+    },
+    "versions": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "$ref": "#/$defs/version"
+        },
+        "runtime": {
+          "$ref": "#/$defs/version"
+        },
+        "language_contract": {
+          "$ref": "#/$defs/version"
+        },
+        "api": {
+          "$ref": "#/$defs/version"
+        },
+        "adapters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "adapter_ref": {
+                "$ref": "#/$defs/ref"
+              },
+              "version": {
+                "$ref": "#/$defs/version"
+              }
+            },
+            "required": [
+              "adapter_ref",
+              "version"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 64
+        },
+        "drivers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "driver_ref": {
+                "$ref": "#/$defs/ref"
+              },
+              "version": {
+                "$ref": "#/$defs/id"
+              }
+            },
+            "required": [
+              "driver_ref",
+              "version"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      },
+      "required": [
+        "product",
+        "runtime",
+        "language_contract",
+        "api",
+        "adapters",
+        "drivers"
+      ],
+      "additionalProperties": false
+    },
+    "availability": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "enum": [
+            "NOT_ASSERTED",
+            "AVAILABLE",
+            "UNAVAILABLE"
+          ]
+        },
+        "observed_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidenceRefs"
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      },
+      "required": [
+        "state",
+        "observed_at",
+        "evidence_refs",
+        "constraints"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "NOT_ASSERTED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "observed_at": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "AVAILABLE",
+                  "UNAVAILABLE"
+                ]
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "observed_at": {
+                "$ref": "#/$defs/timestamp"
+              },
+              "evidence_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "capability_ref": {
+            "$ref": "#/$defs/ref"
+          },
+          "operation_refs": {
+            "$ref": "#/$defs/refs",
+            "minItems": 1
+          },
+          "scope": {
+            "type": "object",
+            "properties": {
+              "target_profile_ref": {
+                "$ref": "#/$defs/ref"
+              },
+              "device_refs": {
+                "$ref": "#/$defs/refs"
+              },
+              "software_snapshot_ref": {
+                "$ref": "#/$defs/ref"
+              },
+              "model_refs": {
+                "$ref": "#/$defs/refs"
+              }
+            },
+            "required": [
+              "target_profile_ref",
+              "device_refs",
+              "software_snapshot_ref",
+              "model_refs"
+            ],
+            "additionalProperties": false
+          },
+          "claim_status": {
+            "enum": [
+              "DECLARED",
+              "OBSERVED",
+              "QUALIFIED"
+            ]
+          },
+          "evidence_refs": {
+            "$ref": "#/$defs/evidenceRefs"
+          },
+          "qualification_scope_ref": {
+            "$ref": "#/$defs/ref"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            },
+            "minItems": 0,
+            "maxItems": 64
+          }
+        },
+        "required": [
+          "capability_ref",
+          "operation_refs",
+          "scope",
+          "claim_status",
+          "evidence_refs",
+          "limitations"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "claim_status": {
+                  "enum": [
+                    "OBSERVED",
+                    "QUALIFIED"
+                  ]
+                }
+              },
+              "required": [
+                "claim_status"
+              ]
+            },
+            "then": {
+              "properties": {
+                "evidence_refs": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "claim_status": {
+                  "const": "QUALIFIED"
+                }
+              },
+              "required": [
+                "claim_status"
+              ]
+            },
+            "then": {
+              "required": [
+                "qualification_scope_ref"
+              ]
+            }
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "manifest_id",
+    "node_id",
+    "issuer_ref",
+    "issued_at",
+    "valid_until",
+    "roles",
+    "platform",
+    "versions",
+    "availability",
+    "capabilities"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "ref": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*:[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "authRef": {
+      "type": "string",
+      "pattern": "^authref:[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "authContextRef": {
+      "type": "string",
+      "pattern": "^authctx:[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$"
+    },
+    "namespaced": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9_]+)+$",
+      "maxLength": 192
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 96,
+      "pattern": "^[0-9]+\\.[0-9]+(?:\\.[0-9]+)?(?:-[A-Za-z0-9.-]+)?(?:\\+[A-Za-z0-9.-]+)?$"
+    },
+    "count64": {
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]{0,18})$",
+      "$comment": "Nonnegative Int64 encoded in base ten. The companion semantic check enforces the upper bound 9223372036854775807."
+    },
+    "positiveCount64": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{0,18}$",
+      "$comment": "Positive Int64 encoded in base ten. The companion semantic check enforces the upper bound 9223372036854775807."
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+      "maxLength": 64,
+      "$comment": "Exact nonnegative decimal text; no exponent or conversion through binary floating point."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,6})?Z$",
+      "$comment": "This proposed record encoding uses a UTC timestamp subset, without leap-second encoding."
+    },
+    "metadata": {
+      "type": "object",
+      "maxProperties": 32,
+      "patternProperties": {
+        "^[a-z][a-z0-9]*(?:[.-][a-z0-9_]+)+$": {
+          "type": [
+            "string",
+            "boolean",
+            "null"
+          ],
+          "maxLength": 2048
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ref"
+      },
+      "uniqueItems": true,
+      "maxItems": 256
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ref"
+      },
+      "uniqueItems": true,
+      "maxItems": 256
+    },
+    "authorityRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/authRef"
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 32
+    },
+    "money": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "$ref": "#/$defs/decimal"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "mode": {
+          "enum": [
+            "STRICT",
+            "ESTIMATED"
+          ]
+        }
+      },
+      "required": [
+        "amount",
+        "currency",
+        "mode"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

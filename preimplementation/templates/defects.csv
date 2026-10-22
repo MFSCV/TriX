@@ -1,0 +1,1 @@
+defect_id,severity,affected_profiles,invariant_violated,reproducer_ref,owner,remediation,fix_revision,regression_tests,residual_limitations,closure_evidence,status

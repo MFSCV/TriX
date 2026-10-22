@@ -1,0 +1,715 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trix:proposed:schema:task-record:0.2",
+  "title": "TriX 0.2 proposed task-record snapshot",
+  "description": "A single record snapshot with orthogonal task lifecycle, attempt execution, observation knowledge and individual effect outcomes. This is not an event log, transition engine or complete effect ledger.",
+  "$comment": "Proposed TriX 0.2 companion contract. Structural validity is not implementation, authorization, compatibility, qualification or runtime evidence. This is not the complete TriX IR.",
+  "type": "object",
+  "properties": {
+    "schema_id": {
+      "const": "trix.task-record"
+    },
+    "schema_version": {
+      "const": "0.2"
+    },
+    "tenant_id": {
+      "$ref": "#/$defs/id"
+    },
+    "project_id": {
+      "$ref": "#/$defs/id"
+    },
+    "principal_id": {
+      "$ref": "#/$defs/id"
+    },
+    "workflow_id": {
+      "$ref": "#/$defs/id"
+    },
+    "task_id": {
+      "$ref": "#/$defs/id"
+    },
+    "task_version": {
+      "$ref": "#/$defs/positiveCount64"
+    },
+    "controller_epoch": {
+      "$ref": "#/$defs/count64"
+    },
+    "plan_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "input_revision_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "policy_ref": {
+      "$ref": "#/$defs/ref"
+    },
+    "authority_refs": {
+      "$ref": "#/$defs/authorityRefs"
+    },
+    "recorded_at": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "lifecycle": {
+      "enum": [
+        "CREATED",
+        "VALIDATED",
+        "QUEUED",
+        "RUNNING",
+        "CANCELLING",
+        "RECONCILING",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED"
+      ]
+    },
+    "attempt": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "attempt_id": {
+              "$ref": "#/$defs/id"
+            },
+            "execution": {
+              "enum": [
+                "NOT_STARTED",
+                "STARTING",
+                "ACTIVE",
+                "STOP_REQUESTED",
+                "STOPPED"
+              ]
+            },
+            "knowledge": {
+              "enum": [
+                "CONFIRMED",
+                "STALE",
+                "UNKNOWN",
+                "CONFLICTING"
+              ]
+            },
+            "observed_at": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/timestamp"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source_ref": {
+              "$ref": "#/$defs/ref"
+            },
+            "evidence_refs": {
+              "$ref": "#/$defs/evidenceRefs"
+            }
+          },
+          "required": [
+            "attempt_id",
+            "execution",
+            "knowledge",
+            "observed_at",
+            "source_ref",
+            "evidence_refs"
+          ],
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "knowledge": {
+                    "const": "CONFIRMED"
+                  }
+                },
+                "required": [
+                  "knowledge"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "observed_at": {
+                    "$ref": "#/$defs/timestamp"
+                  },
+                  "evidence_refs": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "knowledge": {
+                    "const": "STALE"
+                  }
+                },
+                "required": [
+                  "knowledge"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "observed_at": {
+                    "$ref": "#/$defs/timestamp"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "cancellation": {
+      "type": "object",
+      "properties": {
+        "requested": {
+          "type": "boolean"
+        },
+        "intent_ref": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "disposition": {
+          "enum": [
+            "NOT_REQUESTED",
+            "PENDING",
+            "NO_DISPATCH",
+            "EXECUTION_STOPPED",
+            "FURTHER_EFFECTS_BLOCKED",
+            "COMPLETION_WON"
+          ]
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidenceRefs"
+        },
+        "permission_ref": {
+          "$ref": "#/$defs/authRef"
+        },
+        "cost_tracking_ref": {
+          "$ref": "#/$defs/ref"
+        }
+      },
+      "required": [
+        "requested",
+        "intent_ref",
+        "disposition",
+        "evidence_refs"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "requested": {
+                "const": false
+              }
+            },
+            "required": [
+              "requested"
+            ]
+          },
+          "then": {
+            "properties": {
+              "intent_ref": {
+                "type": "null"
+              },
+              "disposition": {
+                "const": "NOT_REQUESTED"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "requested": {
+                "const": true
+              }
+            },
+            "required": [
+              "requested"
+            ]
+          },
+          "then": {
+            "properties": {
+              "intent_ref": {
+                "$ref": "#/$defs/ref"
+              },
+              "disposition": {
+                "not": {
+                  "const": "NOT_REQUESTED"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "disposition": {
+                "enum": [
+                  "NO_DISPATCH",
+                  "EXECUTION_STOPPED",
+                  "FURTHER_EFFECTS_BLOCKED",
+                  "COMPLETION_WON"
+                ]
+              }
+            },
+            "required": [
+              "disposition"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evidence_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "disposition": {
+                "const": "FURTHER_EFFECTS_BLOCKED"
+              }
+            },
+            "required": [
+              "disposition"
+            ]
+          },
+          "then": {
+            "required": [
+              "permission_ref",
+              "cost_tracking_ref"
+            ]
+          }
+        }
+      ]
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "effect_id": {
+            "$ref": "#/$defs/id"
+          },
+          "destination_ref": {
+            "$ref": "#/$defs/ref"
+          },
+          "payload_ref": {
+            "$ref": "#/$defs/ref"
+          },
+          "authority_ref": {
+            "$ref": "#/$defs/authRef"
+          },
+          "outcome": {
+            "enum": [
+              "NOT_DISPATCHED",
+              "UNKNOWN",
+              "APPLIED",
+              "NOT_APPLIED"
+            ]
+          },
+          "evidence_refs": {
+            "$ref": "#/$defs/evidenceRefs"
+          }
+        },
+        "required": [
+          "effect_id",
+          "destination_ref",
+          "payload_ref",
+          "authority_ref",
+          "outcome",
+          "evidence_refs"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "outcome": {
+                  "enum": [
+                    "APPLIED",
+                    "NOT_APPLIED"
+                  ]
+                }
+              },
+              "required": [
+                "outcome"
+              ]
+            },
+            "then": {
+              "properties": {
+                "evidence_refs": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 1024
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/$defs/name"
+          },
+          "artifact_ref": {
+            "$ref": "#/$defs/ref"
+          },
+          "publication": {
+            "enum": [
+              "STAGED",
+              "VERIFIED",
+              "COMMITTED",
+              "TOMBSTONED",
+              "PURGE_PENDING",
+              "PURGED"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "artifact_ref",
+          "publication"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 1024
+    },
+    "terminal_decision": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "CURRENT",
+                "DISPUTED"
+              ]
+            },
+            "evidence_refs": {
+              "$ref": "#/$defs/evidenceRefs",
+              "minItems": 1
+            },
+            "reliance_blocked": {
+              "type": "boolean"
+            },
+            "incident_ref": {
+              "$ref": "#/$defs/ref"
+            }
+          },
+          "required": [
+            "status",
+            "evidence_refs",
+            "reliance_blocked"
+          ],
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "DISPUTED"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              },
+              "then": {
+                "required": [
+                  "incident_ref"
+                ],
+                "properties": {
+                  "reliance_blocked": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "last_event": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "$ref": "#/$defs/id"
+        },
+        "actor_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "controller_epoch": {
+          "$ref": "#/$defs/count64"
+        },
+        "causal_refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidenceRefs",
+          "minItems": 1
+        }
+      },
+      "required": [
+        "event_id",
+        "actor_ref",
+        "controller_epoch",
+        "causal_refs",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "tenant_id",
+    "project_id",
+    "principal_id",
+    "workflow_id",
+    "task_id",
+    "task_version",
+    "controller_epoch",
+    "plan_ref",
+    "input_revision_ref",
+    "policy_ref",
+    "authority_refs",
+    "recorded_at",
+    "lifecycle",
+    "attempt",
+    "cancellation",
+    "effects",
+    "outputs",
+    "terminal_decision",
+    "last_event"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "enum": [
+              "SUCCEEDED",
+              "FAILED",
+              "CANCELLED"
+            ]
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "properties": {
+          "terminal_decision": {
+            "type": "object"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "terminal_decision": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "const": "CANCELLING"
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "properties": {
+          "cancellation": {
+            "properties": {
+              "requested": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "lifecycle": {
+            "const": "CANCELLED"
+          }
+        },
+        "required": [
+          "lifecycle"
+        ]
+      },
+      "then": {
+        "properties": {
+          "cancellation": {
+            "properties": {
+              "requested": {
+                "const": true
+              },
+              "disposition": {
+                "enum": [
+                  "NO_DISPATCH",
+                  "EXECUTION_STOPPED",
+                  "FURTHER_EFFECTS_BLOCKED"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "ref": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*:[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "authRef": {
+      "type": "string",
+      "pattern": "^authref:[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "authContextRef": {
+      "type": "string",
+      "pattern": "^authctx:[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,127}$"
+    },
+    "namespaced": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9_]+)+$",
+      "maxLength": 192
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 96,
+      "pattern": "^[0-9]+\\.[0-9]+(?:\\.[0-9]+)?(?:-[A-Za-z0-9.-]+)?(?:\\+[A-Za-z0-9.-]+)?$"
+    },
+    "count64": {
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]{0,18})$",
+      "$comment": "Nonnegative Int64 encoded in base ten. The companion semantic check enforces the upper bound 9223372036854775807."
+    },
+    "positiveCount64": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{0,18}$",
+      "$comment": "Positive Int64 encoded in base ten. The companion semantic check enforces the upper bound 9223372036854775807."
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$",
+      "maxLength": 64,
+      "$comment": "Exact nonnegative decimal text; no exponent or conversion through binary floating point."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,6})?Z$",
+      "$comment": "This proposed record encoding uses a UTC timestamp subset, without leap-second encoding."
+    },
+    "metadata": {
+      "type": "object",
+      "maxProperties": 32,
+      "patternProperties": {
+        "^[a-z][a-z0-9]*(?:[.-][a-z0-9_]+)+$": {
+          "type": [
+            "string",
+            "boolean",
+            "null"
+          ],
+          "maxLength": 2048
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ref"
+      },
+      "uniqueItems": true,
+      "maxItems": 256
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ref"
+      },
+      "uniqueItems": true,
+      "maxItems": 256
+    },
+    "authorityRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/authRef"
+      },
+      "uniqueItems": true,
+      "minItems": 1,
+      "maxItems": 32
+    },
+    "money": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "$ref": "#/$defs/decimal"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "mode": {
+          "enum": [
+            "STRICT",
+            "ESTIMATED"
+          ]
+        }
+      },
+      "required": [
+        "amount",
+        "currency",
+        "mode"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

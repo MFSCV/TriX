@@ -1,0 +1,131 @@
+{
+  "format": "trix-example-expectations",
+  "version": "0.2",
+  "status": "PROPOSED",
+  "scope": "Documentation-package parsing, JSON Schema validation and the selected cross-field checks documented in schemas/README.md. No example records a real runtime or hardware test.",
+  "cases": [
+    {
+      "case_id": "valid-task-request",
+      "schema": "task-request.schema.json",
+      "path": "task-request.valid.json",
+      "expected": "valid",
+      "purpose": "Illustrative record only; no live execution, authorization or qualification is claimed."
+    },
+    {
+      "case_id": "valid-capability-manifest",
+      "schema": "capability-manifest.schema.json",
+      "path": "capability-manifest.valid.json",
+      "expected": "valid",
+      "purpose": "Illustrative record only; no live execution, authorization or qualification is claimed."
+    },
+    {
+      "case_id": "valid-task-record",
+      "schema": "task-record.schema.json",
+      "path": "task-record.valid.json",
+      "expected": "valid",
+      "purpose": "Illustrative record only; no live execution, authorization or qualification is claimed."
+    },
+    {
+      "case_id": "valid-test-evidence",
+      "schema": "test-evidence.schema.json",
+      "path": "test-evidence.valid.json",
+      "expected": "valid",
+      "purpose": "Illustrative record only; no live execution, authorization or qualification is claimed."
+    },
+    {
+      "case_id": "reject-unknown-field",
+      "schema": "task-request.schema.json",
+      "path": "invalid/task-request.unknown-field.json",
+      "expected": "invalid",
+      "expected_error": "schema:additionalProperties",
+      "purpose": "Unknown top-level fields are rejected."
+    },
+    {
+      "case_id": "reject-missing-authority-ref",
+      "schema": "task-request.schema.json",
+      "path": "invalid/task-request.missing-authority-ref.json",
+      "expected": "invalid",
+      "expected_error": "schema:required",
+      "purpose": "Opaque grant references are structurally required; their presence grants no authority."
+    },
+    {
+      "case_id": "reject-unsupported-schema",
+      "schema": "task-request.schema.json",
+      "path": "invalid/task-request.unsupported-schema.json",
+      "expected": "invalid",
+      "expected_error": "schema:const",
+      "purpose": "This checker does not accept an unsupported record revision."
+    },
+    {
+      "case_id": "reject-int64-overflow",
+      "schema": "task-request.schema.json",
+      "path": "invalid/task-request.int64-overflow.json",
+      "expected": "invalid",
+      "expected_error": "semantic:INT64_OUT_OF_RANGE",
+      "purpose": "Encoded nonnegative Int64 quantities must fit their exact integer bound."
+    },
+    {
+      "case_id": "reject-unsupported-feature",
+      "schema": "task-request.schema.json",
+      "path": "invalid/task-request.unsupported-feature.json",
+      "expected": "invalid",
+      "expected_error": "semantic:UNSUPPORTED_REQUIRED_FEATURE",
+      "purpose": "The documented companion admission subset supports no additional mandatory features."
+    },
+    {
+      "case_id": "reject-unevidenced-qualification",
+      "schema": "capability-manifest.schema.json",
+      "path": "invalid/capability-manifest.qualification-without-evidence.json",
+      "expected": "invalid",
+      "expected_error": "schema:minItems",
+      "purpose": "A qualification claim requires scoped evidence references; the checker cannot authenticate them."
+    },
+    {
+      "case_id": "reject-stale-stop-claim",
+      "schema": "task-record.schema.json",
+      "path": "invalid/task-record.stale-stop-claim.json",
+      "expected": "invalid",
+      "expected_error": "semantic:CANCELLED_STOP_NOT_CONFIRMED",
+      "purpose": "An ACTIVE, STALE observation cannot support a current cancellation disposition that execution is confirmed stopped."
+    },
+    {
+      "case_id": "reject-terminal-unknown-effect",
+      "schema": "task-record.schema.json",
+      "path": "invalid/task-record.terminal-unknown-effect.json",
+      "expected": "invalid",
+      "expected_error": "semantic:UNRESOLVED_TERMINAL_EFFECT",
+      "purpose": "A current terminal decision cannot hide an unresolved external effect."
+    },
+    {
+      "case_id": "reject-pass-without-evidence",
+      "schema": "test-evidence.schema.json",
+      "path": "invalid/test-evidence.pass-without-artifacts.json",
+      "expected": "invalid",
+      "expected_error": "schema:minItems",
+      "purpose": "Pass requires execution details and evidence artifacts, without treating references as authenticated proof."
+    },
+    {
+      "case_id": "reject-duplicate-key",
+      "schema": "task-request.schema.json",
+      "path": "invalid/task-request.duplicate-key.json",
+      "expected": "invalid",
+      "expected_error": "parse:DUPLICATE_KEY",
+      "purpose": "Duplicate keys are rejected even when their values agree."
+    },
+    {
+      "case_id": "reject-nonfinite-number",
+      "schema": "task-request.schema.json",
+      "path": "invalid/task-request.nonfinite-number.json",
+      "expected": "invalid",
+      "expected_error": "parse:NON_FINITE_NUMBER",
+      "purpose": "Non-finite literals are rejected before schema validation."
+    },
+    {
+      "case_id": "accept-explicit-cancellation-alternative",
+      "schema": "task-record.schema.json",
+      "path": "valid/task-record.cancelled-effects-blocked.json",
+      "expected": "valid",
+      "purpose": "RUN-004 permits an explicit alternative disposition with retained effects, permission, evidence and separately tracked cost; execution need not be claimed stopped."
+    }
+  ]
+}

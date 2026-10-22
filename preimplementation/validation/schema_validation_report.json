@@ -1,0 +1,321 @@
+{
+  "report_format": "trix-companion-schema-validation",
+  "report_version": "0.2",
+  "generated_at": "2026-10-22T07:26:32Z",
+  "scope": "DOCUMENTATION_PACKAGE",
+  "baseline_status": "PROPOSED",
+  "overall_status": "pass",
+  "environment": {
+    "python": "3.12.14",
+    "jsonschema": "4.26.0"
+  },
+  "tool_sha256": "40a6177f7f4dc36a098806dabf73b8cc7816e03ca803c99d5728eb4e54bfaf20",
+  "checks_performed": [
+    "UTF-8 JSON parsing with duplicate-key and non-finite-number rejection",
+    "Draft 2020-12 meta-schema validation of four standalone schemas",
+    "Closed record shape, required values, UTC calendar timestamps and conditional field constraints",
+    "Exact nonnegative Int64 quantity bounds without binary floating-point conversion",
+    "Local input/output/effect identifier uniqueness and declared completion-output names",
+    "Empty supported mandatory-feature set and NEVER retry-policy consistency",
+    "Selected snapshot guards for bound attempts, current terminal effects and cancellation dispositions",
+    "Complete example-index coverage and exact expected negative-fixture rejection codes"
+  ],
+  "not_checked": [
+    "TriX source grammar, full IR, graph verification or compiler semantic preservation",
+    "Reference resolution, real identity, permission, credential validity or secret-content detection",
+    "Runtime transitions, durability, scheduling, execution, network behaviour or external effects",
+    "Artifact authenticity, capability freshness, hardware availability or qualification",
+    "Numerical quality, performance, operational security or acceptance-test implementation"
+  ],
+  "schemas": [
+    {
+      "path": "schemas/task-request.schema.json",
+      "sha256": "6048d7502f58f58d4ce6b0bda2b06468c719d6521ec6f57e9fbaf3c8327a605a",
+      "status": "valid"
+    },
+    {
+      "path": "schemas/capability-manifest.schema.json",
+      "sha256": "dd9ec751262469930647598649546d6e2c18dff433475f573b153e203ce0b090",
+      "status": "valid"
+    },
+    {
+      "path": "schemas/task-record.schema.json",
+      "sha256": "26ea53f9ebd299f707ae05c93f15e1ca1814302816d665fb49e324094b71fb60",
+      "status": "valid"
+    },
+    {
+      "path": "schemas/test-evidence.schema.json",
+      "sha256": "ad7f793d9697b57e9b3feec76221a562f3e0d0c9fb85f51e525bdd73afc3ffa1",
+      "status": "valid"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "valid-task-request",
+      "path": "examples/task-request.valid.json",
+      "schema": "task-request.schema.json",
+      "sha256": "5f5cbe692aa23f4bd92c8b28be2f6de8adf12268687ca536f4e1cbed6bb50dea",
+      "expected": "valid",
+      "observed": "valid",
+      "expected_error": null,
+      "expectation_met": true,
+      "errors": []
+    },
+    {
+      "case_id": "valid-capability-manifest",
+      "path": "examples/capability-manifest.valid.json",
+      "schema": "capability-manifest.schema.json",
+      "sha256": "0ce41a3163ec02e37109b94e41d8a34e7f33a000764fe5e8942c34a6c7ba306a",
+      "expected": "valid",
+      "observed": "valid",
+      "expected_error": null,
+      "expectation_met": true,
+      "errors": []
+    },
+    {
+      "case_id": "valid-task-record",
+      "path": "examples/task-record.valid.json",
+      "schema": "task-record.schema.json",
+      "sha256": "906e476dca31fdc17ec52319694cb7b0b9546d208474573d0e6c74bc00777550",
+      "expected": "valid",
+      "observed": "valid",
+      "expected_error": null,
+      "expectation_met": true,
+      "errors": []
+    },
+    {
+      "case_id": "valid-test-evidence",
+      "path": "examples/test-evidence.valid.json",
+      "schema": "test-evidence.schema.json",
+      "sha256": "3480063b140fec4256eee9b048dbb48c5ed0c5d51a2b634d90180c57f2327868",
+      "expected": "valid",
+      "observed": "valid",
+      "expected_error": null,
+      "expectation_met": true,
+      "errors": []
+    },
+    {
+      "case_id": "reject-unknown-field",
+      "path": "examples/invalid/task-request.unknown-field.json",
+      "schema": "task-request.schema.json",
+      "sha256": "7bcbd452f87897fffb31d5fa38d08896587c9779da9d8fd584cbe4abd08045cc",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "schema:additionalProperties",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "schema:additionalProperties",
+          "instance_path": "",
+          "schema_path": "/additionalProperties",
+          "message": "Constraint 'additionalProperties' was not satisfied."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-missing-authority-ref",
+      "path": "examples/invalid/task-request.missing-authority-ref.json",
+      "schema": "task-request.schema.json",
+      "sha256": "fbce7b0c6ae2222a1d2b13f8eb39807c91d0a46e6cbbce790b0c28f0d34f3d38",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "schema:required",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "schema:required",
+          "instance_path": "/authorization",
+          "schema_path": "/properties/authorization/required",
+          "message": "Constraint 'required' was not satisfied."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-unsupported-schema",
+      "path": "examples/invalid/task-request.unsupported-schema.json",
+      "schema": "task-request.schema.json",
+      "sha256": "75a2a56a228ca0ad8f5a59f3a52533b8d990b3ad0ed0051080c6c1c30174025c",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "schema:const",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "schema:const",
+          "instance_path": "/schema_version",
+          "schema_path": "/properties/schema_version/const",
+          "message": "Constraint 'const' was not satisfied."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-int64-overflow",
+      "path": "examples/invalid/task-request.int64-overflow.json",
+      "schema": "task-request.schema.json",
+      "sha256": "f03ff523640dd3583dc86050a2e1db2424085a5cbafc4c5f364d7879d60402d9",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "semantic:INT64_OUT_OF_RANGE",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "semantic:INT64_OUT_OF_RANGE",
+          "instance_path": "/requirements/memory_bytes_min",
+          "message": "Encoded quantity exceeds the nonnegative Int64 range."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-unsupported-feature",
+      "path": "examples/invalid/task-request.unsupported-feature.json",
+      "schema": "task-request.schema.json",
+      "sha256": "ef2da3de37e96917ecee125130c26767d7e8ea2d98237a98caf45bf9628210ad",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "semantic:UNSUPPORTED_REQUIRED_FEATURE",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "semantic:UNSUPPORTED_REQUIRED_FEATURE",
+          "instance_path": "/required_features/0",
+          "message": "The companion subset supports no additional mandatory features."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-unevidenced-qualification",
+      "path": "examples/invalid/capability-manifest.qualification-without-evidence.json",
+      "schema": "capability-manifest.schema.json",
+      "sha256": "5e3ba900501baf6273e1bbe2f31d2629c12091b5518267f7e9ae0ecc57e3c425",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "schema:minItems",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "schema:minItems",
+          "instance_path": "/capabilities/0/evidence_refs",
+          "schema_path": "/properties/capabilities/items/allOf/0/then/properties/evidence_refs/minItems",
+          "message": "Constraint 'minItems' was not satisfied."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-stale-stop-claim",
+      "path": "examples/invalid/task-record.stale-stop-claim.json",
+      "schema": "task-record.schema.json",
+      "sha256": "24245fb1b2dcab81aee71a9a7a31f8237deb1bf3aaea83c0892c74d8e0e47020",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "semantic:CANCELLED_STOP_NOT_CONFIRMED",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "semantic:CANCELLED_STOP_NOT_CONFIRMED",
+          "instance_path": "/attempt",
+          "message": "The claimed stopped disposition lacks a confirmed STOPPED observation."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-terminal-unknown-effect",
+      "path": "examples/invalid/task-record.terminal-unknown-effect.json",
+      "schema": "task-record.schema.json",
+      "sha256": "20a52202b2679136db82961baa0f5839a7426c6ba047526e4319c2045c42fe7a",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "semantic:UNRESOLVED_TERMINAL_EFFECT",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "semantic:UNRESOLVED_TERMINAL_EFFECT",
+          "instance_path": "/effects/0/outcome",
+          "message": "A current terminal decision cannot hide an unresolved effect."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-pass-without-evidence",
+      "path": "examples/invalid/test-evidence.pass-without-artifacts.json",
+      "schema": "test-evidence.schema.json",
+      "sha256": "473406a84b992a5f12e6c92789caebb51d32e55cd3955c16fd1309957da7e84d",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "schema:minItems",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "schema:minItems",
+          "instance_path": "/artifacts",
+          "schema_path": "/allOf/1/then/properties/artifacts/minItems",
+          "message": "Constraint 'minItems' was not satisfied."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-duplicate-key",
+      "path": "examples/invalid/task-request.duplicate-key.json",
+      "schema": "task-request.schema.json",
+      "sha256": "056b63bfe76e507ffa89090e7a7905eebfd8b8a7f4f3b028fd749af737a725b1",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "parse:DUPLICATE_KEY",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "parse:DUPLICATE_KEY",
+          "instance_path": "",
+          "message": "Duplicate JSON object key."
+        }
+      ]
+    },
+    {
+      "case_id": "reject-nonfinite-number",
+      "path": "examples/invalid/task-request.nonfinite-number.json",
+      "schema": "task-request.schema.json",
+      "sha256": "4ca855372c3c4130e2e52996890350e4df43b37bc585c43b3630df53460294ce",
+      "expected": "invalid",
+      "observed": "invalid",
+      "expected_error": "parse:NON_FINITE_NUMBER",
+      "expectation_met": true,
+      "errors": [
+        {
+          "code": "parse:NON_FINITE_NUMBER",
+          "instance_path": "",
+          "message": "Non-finite JSON number."
+        }
+      ]
+    },
+    {
+      "case_id": "accept-explicit-cancellation-alternative",
+      "path": "examples/valid/task-record.cancelled-effects-blocked.json",
+      "schema": "task-record.schema.json",
+      "sha256": "b8677f02739c78fff67e54407028274bc7676110f0cce0309ccdc165873eb9d6",
+      "expected": "valid",
+      "observed": "valid",
+      "expected_error": null,
+      "expectation_met": true,
+      "errors": []
+    }
+  ],
+  "configuration_errors": [],
+  "summary": {
+    "schemas_checked": 4,
+    "schemas_valid": 4,
+    "cases_checked": 16,
+    "expected_valid_cases": 5,
+    "expected_invalid_cases": 11,
+    "accepted_cases": 5,
+    "rejected_cases": 11,
+    "expectations_met": 16,
+    "expectations_not_met": 0,
+    "rejected_by_stage": {
+      "parse": 2,
+      "schema": 5,
+      "semantic": 4
+    },
+    "runtime_tests_run": 0,
+    "hardware_qualifications_run": 0
+  },
+  "index_sha256": "3476b7d07a190bd71af155f2ff67601226fd5a6f41bc5087fdfd481b43a05d9a"
+}

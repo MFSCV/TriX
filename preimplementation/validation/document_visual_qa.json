@@ -1,0 +1,86 @@
+{
+  "report_format": "trix-document-visual-quality-review",
+  "report_version": "0.2",
+  "generated_at": "2026-10-22T07:28:19Z",
+  "scope": "DOCUMENTATION_PACKAGE",
+  "overall_status": "pass",
+  "page_count": 44,
+  "page_review": {
+    "pages_reviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "method": "Every page inspected individually at original image resolution. Pages 1-42 were pixel-identical after the final bibliography-link formatting correction; the revised pages 43-44 were inspected again.",
+    "layout_issues_remaining": []
+  },
+  "structural_review": {
+    "requirements_present_in_pdf": 228,
+    "chapter_page_map_matches": true,
+    "chapter_count": 22,
+    "internal_hyperlink_targets_resolve": true,
+    "external_source_hyperlinks": 30,
+    "literal_markdown_source_links_in_pdf": false
+  },
+  "artifacts": [
+    {
+      "path": "docs/TriX_Design_and_Implementation_Standard_v0_2.md",
+      "sha256": "23620727db098667accfb6a6976a3773fadf578582ab973d4638a01575e26c86"
+    },
+    {
+      "path": "docs/TriX_Design_and_Implementation_Standard_v0_2.docx",
+      "sha256": "224bab5c2be6951965ffa8a279e5b7b6e589f26d9c78a2fc3295187df45cc0a0"
+    },
+    {
+      "path": "docs/TriX_Design_and_Implementation_Standard_v0_2.pdf",
+      "sha256": "725a7094ad7ce2c4cfb26cc2989221338147e4b6dffb3f51d466070085ebfc7f"
+    }
+  ],
+  "limits": [
+    "Review concerns the documentation and its presentation only.",
+    "No TriX compiler, runtime, hardware, model, performance or operational conformance is established."
+  ],
+  "runtime_tests_run": 0,
+  "hardware_qualifications_run": 0
+}

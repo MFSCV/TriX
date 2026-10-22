@@ -1,0 +1,94 @@
+{
+  "schema_id": "trix.task-request",
+  "schema_version": "0.2",
+  "tenant_id": "example-tenant",
+  "project_id": "example-project",
+  "principal_id": "example-principal",
+  "workflow_id": "example-workflow",
+  "task_id": "example-task",
+  "submission_id": "example-submission",
+  "plan_ref": "planref:example-plan",
+  "input_revision_ref": "revision:example-inputs",
+  "operation": {
+    "operation_ref": "operation:example-digest",
+    "version": "0.0.0-example",
+    "contract_ref": "contract:example-digest-v0"
+  },
+  "authorization": {
+    "authentication_context_ref": "authctx:example-context",
+    "grant_refs": [
+      "authref:example-grant"
+    ]
+  },
+  "inputs": [
+    {
+      "name": "source",
+      "type_ref": "type:bytes-v0_2",
+      "artifact_ref": "artifact:example-input"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "digest",
+      "type_ref": "type:bytes-v0_2"
+    }
+  ],
+  "declared_effects": [
+    {
+      "kind": "trix.artifact.read",
+      "resource_refs": [
+        "artifact:example-input"
+      ]
+    },
+    {
+      "kind": "trix.artifact.write",
+      "resource_refs": [
+        "project:example-project"
+      ]
+    }
+  ],
+  "data_policy": {
+    "policy_ref": "policy:example-policy",
+    "classification_ref": "classification:example-public",
+    "allowed_destination_refs": [
+      "destination:example-local"
+    ],
+    "retention_policy_ref": "policy:example-retention"
+  },
+  "requirements": {
+    "capability_refs": [
+      "capability:example-cpu-digest"
+    ],
+    "cpu_threads_min": "1",
+    "memory_bytes_min": "1048576",
+    "accelerator_memory_bytes_min": "0",
+    "isolation_profile_ref": "profile:example-local"
+  },
+  "budget": {
+    "wall_time_limit_ms": "1000",
+    "transfer_bytes_limit": "0",
+    "financial_limit": {
+      "amount": "0.00",
+      "currency": "EUR",
+      "mode": "STRICT"
+    }
+  },
+  "retry": {
+    "mode": "NEVER",
+    "max_attempts": "1",
+    "max_elapsed_ms": "1000",
+    "uncertain_effect_policy": "RECONCILE_BEFORE_RETRY"
+  },
+  "completion": {
+    "required_outputs": [
+      "digest"
+    ],
+    "effect_obligations": "ALL_RESOLVED",
+    "verification_profile_ref": "profile:example-digest-check"
+  },
+  "required_features": [],
+  "metadata": {
+    "org.trix.example": "Illustrative proposed record only. No task ran, authority was verified, or platform was qualified."
+  },
+  "unrecognized_field": true
+}

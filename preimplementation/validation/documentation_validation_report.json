@@ -1,0 +1,96 @@
+{
+  "kind": "documentation_package_validation",
+  "specification_revision": "0.2",
+  "executed_at_utc": "2026-10-22T07:26:32.786032+00:00",
+  "scope": "Document identifiers, references, registers and claim hygiene only. No TriX compiler/runtime/hardware/security qualification.",
+  "checks": [
+    {
+      "check": "requirements_unique",
+      "passed": true,
+      "detail": {
+        "count": 228
+      }
+    },
+    {
+      "check": "original_ids_preserved",
+      "passed": true,
+      "detail": {
+        "original_count": 127,
+        "missing": []
+      }
+    },
+    {
+      "check": "acceptance_ids_unique",
+      "passed": true,
+      "detail": {
+        "count": 67
+      }
+    },
+    {
+      "check": "source_references_resolve",
+      "passed": true,
+      "detail": {
+        "definitions": 30,
+        "unresolved": []
+      }
+    },
+    {
+      "check": "requirement_register_matches",
+      "passed": true,
+      "detail": {
+        "rows": 228
+      }
+    },
+    {
+      "check": "test_register_matches",
+      "passed": true,
+      "detail": {
+        "rows": 67
+      }
+    },
+    {
+      "check": "future_tests_not_misreported",
+      "passed": true,
+      "detail": {
+        "runtime_tests_executed_by_this_check": 0
+      }
+    },
+    {
+      "check": "verification_obligations_present",
+      "passed": true,
+      "detail": {
+        "note": "Review obligations are not runtime passes or complete executable coverage."
+      }
+    },
+    {
+      "check": "test_requirement_links_resolve",
+      "passed": true,
+      "detail": {
+        "unknown": []
+      }
+    },
+    {
+      "check": "handoff_documents_present",
+      "passed": true,
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "check": "language_and_citation_hygiene",
+      "passed": true,
+      "detail": {
+        "flagged_files": [],
+        "scope": "Known old-language markers and tool citation tokens; not a general language detector."
+      }
+    },
+    {
+      "check": "support_claims_remain_planned",
+      "passed": true,
+      "detail": {
+        "rows": 13
+      }
+    }
+  ],
+  "passed": true
+}
