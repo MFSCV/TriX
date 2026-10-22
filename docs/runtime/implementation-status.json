@@ -15,7 +15,18 @@
       "failed": 0
     },
     "npm_run_demo": "LOCAL_VERIFIED; real CPU transform and installed callable output",
-    "diff_whitespace": "passed"
+    "diff_whitespace": "passed",
+    "portable_core_ci": {
+      "result": "passed",
+      "operating_systems": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "source_commit": "abe7092d0c956a353c9aaab423a58ee001edc61e",
+      "workflow_run_url": "https://github.com/MFSCV/TriX/actions/runs/39859847801",
+      "scope": "portable core subset; not full native delivery or editor-host qualification"
+    }
   },
   "implemented": [
     "strict bounded typed one-node plan, verifier and canonical digest",
@@ -30,17 +41,20 @@
   "not_qualified": [
     "live model inference or held-out model quality",
     "live external MCP/ACP/editor-host interoperability",
-    "live GitHub delivery/CI status",
+    "live product GitHub draft delivery adapter",
     "visual browser rendering after unavailable Chromium download",
     "reconstructed optional eve install/build/typecheck (dependency cache unavailable)",
-    "Windows/macOS/shell qualification (CI campaigns configured only)",
+    "complete Windows/macOS/shell qualification beyond the portable core CI subset",
     "OS arbitrary-code sandbox, independent audit, hosted multi-tenancy",
     "GPU/cluster execution, production deployment, backup/restore/SLO qualification",
     "complete general DAG/compiler/source-language frontend"
   ],
   "publication": {
-    "remote_source_changes": "not pushed; automatic approval review rejected publication authorization",
-    "private_review_artifact": "patch applies to pinned baseline",
+    "remote_source_changes": "published following explicit user authorization",
+    "repository": "https://github.com/MFSCV/TriX",
+    "branch": "feat/end-to-end-agent",
+    "implementation_commit": "abe7092d0c956a353c9aaab423a58ee001edc61e",
+    "private_review_artifact": "pre-publication snapshot patch applies to pinned baseline",
     "production_deployment": "not performed"
   }
 }
