@@ -1,6 +1,6 @@
 # What TriX does and how to use her
 
-Document TRIX-PRODUCT-001 · Application 0.5.0 · Current user guidance.
+Document TRIX-PRODUCT-001 · Application 0.6.0 · Current user guidance.
 
 TriX helps plan where AI models, tools and data-processing tasks run: describe hardware and runtimes, check compatibility and export a portable environment configuration. She makes hardware/runtime constraints, task authority and results visible in one conversation. Her proposed language programme aims to separate intended work from the engines and environments that execute it. The current application implements environment planning, bounded CPU execution and an experimental orchestration adapter; it is not the complete language or a generally qualified autonomous runtime.
 
@@ -11,7 +11,7 @@ TriX helps plan where AI models, tools and data-processing tasks run: describe h
 | Local tools | Describe target hardware and software; validate compatibility; compare scenarios; export JSON/YAML/Markdown through the retained editor; run the pure CPU example | A checked planning artifact or the real bounded CPU result. No target project changes |
 | AI configured | Interpret a goal and delegate bounded specialist assignments after a successful provider call | Configuration alone does not prove connectivity or model quality |
 | AI plus enrolled MCP tools and task authority | Request implementation, tests, external audit, delivery and verification within fixed target bindings | Actual execution needs provider receipts. Tests and audit must pass for the exact revision before deployment |
-| Roadmap | Complete language/compiler, general agent CLI, native IDE operation, inbound MCP, hardware qualification and unattended workers | Separate implementation and qualification milestones; not enabled by the current UI |
+| Roadmap | Complete language/compiler, general agent CLI, native IDE operation, inbound MCP, hardware qualification and general external executors | Separate implementation and qualification milestones; not enabled by the current UI |
 
 Capability depends on the server configuration. **Local tools** means model-powered delegation is unavailable. Inspect Connections for enrolled tools and the [activation record](activation-status.md) for the latest observed setup. A knowledge MCP connection alone does not enable implementation or model inference. The OpenAI adapter is one experimental integration, not a requirement that the future language use an exclusive provider. Inbound and outbound MCP are separate capabilities; this release implements only the bounded outbound adapter for protocol 2025-11-25.
 
@@ -60,3 +60,7 @@ Attach up to eight uniquely named text files, at most 100 KB each. Reports are e
 Local conversations and the working environment stay in this browser. AI tasks use server state and capture the environment when created. Editing the browser environment later does not change an active AI task's snapshot; start a new task to use the revised environment. Neither mode silently imports all previous local history into server tasks.
 
 The evidence panel distinguishes browser-local response preparation, CPU worker round-trip, server built-in execution and observed model-request time. These scopes cannot be compared as if they were the same latency metric. The reproducible benchmark measures warm deterministic functions in its recorded container. Live model quality, TTFT, external MCP latency and production SLOs remain unmeasured until those integrations are configured and tested.
+
+## Saved tasks and background checks
+
+Connected tasks use private Supabase storage when configured; older R2 tasks remain available. Local planning stays in the browser. Open **Connections → Test background processing** to queue an infrastructure check that returns 50 without a model or an open page. AI work requires a model, and background AI additionally needs the processor model and explicit task activation. See the [Supabase runtime](supabase-runtime.md) for limits and recovery.

@@ -1,24 +1,24 @@
 {
   "schema": "trix.release/v1",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "channel": "experimental",
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "planningVersion": "0.2.0",
   "standardRevision": "0.2",
   "ruleset": "2026-10-22.2",
-  "status": "experimental; local planning verified; live orchestration qualification open",
+  "status": "experimental; local planning and Supabase infrastructure verified; live model orchestration qualification open",
   "sourceBaseline": "1ad05932260dea02b119873ae11929f730cf9193",
   "publicRepository": "https://github.com/MFSCV/TriX",
   "documentation": "docs/README.md",
-  "audit": "docs/release-audit-v0.5.0.md",
+  "audit": "docs/release-audit-v0.6.0.md",
   "sourceFiles": [
     {
       "path": ".env.example",
-      "sha256": "9ac5a3e0fa271e0bae28626729efe9a2451c926cbc1ef04fda468c1f6d0dba9d"
+      "sha256": "c6bfdcde572a4837cf21463f22cdfce7a61e10a677af8b9f3fc11741ad38bc20"
     },
     {
       "path": ".gitignore",
-      "sha256": "336c1375b3510650aaa96d31aff20238b5148c432fa14f16526d94911d3ce6e0"
+      "sha256": "aa89b905745df314285cb5c8bef74d73756b09ffead647ecdc75e8361e392d4a"
     },
     {
       "path": ".openai/hosting.example.json",
@@ -26,23 +26,23 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "16b3dc6c7c3e54996e9be7e251a0379068124f7e78e9a5b1eb9bd76f0e1d37aa"
+      "sha256": "31535a52139d3abecfc7df3521a4103b19cedc10d5b1e39031aae1165599aa79"
     },
     {
       "path": "README.md",
-      "sha256": "a89bf8c8131bcfe9efac1e21b5691cba04e05ecee79c04092206234b9615bd23"
+      "sha256": "3c90355b75c064a2cd7e20a1779dc5b0192efee060f23edb0937a0545f6db93e"
     },
     {
       "path": "docs/README.md",
-      "sha256": "0825e1ff15ef877c9373e2c09160e6db31f7e80b392abfadbbfe311bf90a1439"
+      "sha256": "cd4ed09b9fb13eb1bb037f0da8aaed661323986410a8f74e0ffdd6419cc42fb0"
     },
     {
       "path": "docs/activation-status.md",
-      "sha256": "fe9bb42e0f701100ebce652d6478ac9ec77838e32f7b62af47379181af41bfac"
+      "sha256": "91047c6ed4579b29a89b5d1ec2fc555fbf02df419d180ce80805da3a840c1140"
     },
     {
       "path": "docs/agent-integration.md",
-      "sha256": "0f958e47208ee9630602901b4ff3e77fa5487a859a3d7dbbb7f30fd3c8605302"
+      "sha256": "87ba18732d2f521214d9fb775cc95d63eae20c2bf2c69c061f6253ade0246ebe"
     },
     {
       "path": "docs/agentic-ui-implementation.md",
@@ -50,7 +50,7 @@
     },
     {
       "path": "docs/implementation-baseline.md",
-      "sha256": "87a2e70b9212cb9e1059265be407b083c0974344fd046c6a444a11ec50f3bfb3"
+      "sha256": "75cf99fe683430a8c9436703db568b7ee3e77262d574fb6acec8cccbc756f376"
     },
     {
       "path": "docs/implementation-increment-v0.2.md",
@@ -58,19 +58,35 @@
     },
     {
       "path": "docs/orchestrator-runtime.md",
-      "sha256": "abb63f45ac157fa3dbb8e525bcedc2ab875438679b56fec33b5483bacab4de04"
+      "sha256": "af131a3e97c6c55bd89e74f2013547d69595ee480861e0f07bd813e5d2ddb3e2"
     },
     {
       "path": "docs/product-guide.md",
-      "sha256": "2a88174ed4f86bb36e3c68b77bdf64bf03762df9758d67210e8460ab70e482b8"
+      "sha256": "418562f243fa7bcaf77f6d5f2e298f2d6775073c5ff2f9f037adaf8502404956"
     },
     {
       "path": "docs/release-audit-v0.5.0.md",
       "sha256": "6ee9880916ecaee888991a4865455cb56f29a5a8260627afd876a9c2f3b3717c"
     },
     {
+      "path": "docs/release-audit-v0.6.0.md",
+      "sha256": "012465811209e2299603ae8b9ebb87b32f7af1280338f17b9299e1aaaba176db"
+    },
+    {
       "path": "docs/source-inventory.json",
       "sha256": "4a0d51068161062279bb2585f950dfb88d429a43d29c7b3e1ede25696131b252"
+    },
+    {
+      "path": "docs/supabase-runtime.md",
+      "sha256": "96885e42a5dd42b562d783b4f92d19aa5a7d9a4035a4921ad8d63a038df5a46c"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-10-23-supabase.md",
+      "sha256": "3d3497ea427adca0f351e415d82519cc18e09e082cdb400755f44e81631a6bf5"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-10-23-supabase.md",
+      "sha256": "7d56f59e5cd9bdcf780693a775141fd6ecbb6c23a07287b8266b85c86b49d183"
     },
     {
       "path": "docs/verification-ui-v0.3.md",
@@ -102,7 +118,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "a7a4a4587f77f39f6ccc1740f00afb404f58e3d3eabeefa3b7d7c1249a8db2ce"
+      "sha256": "00bcc8eb8d00b2d420d849757f67c10b762c4e32ebf905d0b78ddaf64b046e81"
     },
     {
       "path": "public/adapters.mjs",
@@ -117,6 +133,10 @@
       "sha256": "408bdacbf0f5bf88d5d3ad033221c0576310de1da5c6015ceeb81675690ebcb8"
     },
     {
+      "path": "public/background-state.mjs",
+      "sha256": "9cfb98a430b167a95b78c14de71c9d1d184b128c6fbf24c71ef23ceccb442ed7"
+    },
+    {
       "path": "public/chat-layout.css",
       "sha256": "57ab1bb8fa3da2cc879803aa65e7ce796203de57e8e52fd8d46b90c107e7a151"
     },
@@ -126,7 +146,7 @@
     },
     {
       "path": "public/chat.mjs",
-      "sha256": "5fdbf610d002c6ff2ea62dcec078e81bddc04b4fd1a996c979478b815b8bac21"
+      "sha256": "6c3ce35deab1aaa5ab5624982e8d5997bbf568f54725da5c00be595a835d7f48"
     },
     {
       "path": "public/compatibility.mjs",
@@ -170,7 +190,7 @@
     },
     {
       "path": "public/product-info.mjs",
-      "sha256": "f16a2a06a7cc232916e30848ad9082fb862a1544aebe6ae131831ecf2d1cf860"
+      "sha256": "90ebcd4bccc2242589b5ffbec4f64fa2cd03ec9c97d21cfaf93287e2458cf8a2"
     },
     {
       "path": "public/reference-plan.mjs",
@@ -178,7 +198,7 @@
     },
     {
       "path": "public/release.mjs",
-      "sha256": "435dd413eb6af5826308f70bdd5511e4f27dc81af9c1705f4c17ada432b0d682"
+      "sha256": "14c9d44ede4823b0aa5da191566917c9a794d1287454b468059a8805b1feaf6c"
     },
     {
       "path": "public/specialists.mjs",
@@ -210,11 +230,19 @@
     },
     {
       "path": "repository/CURRENT_STATUS.md",
-      "sha256": "f12b0459dec577e05c880b6e188b35fad6d334258452fe99dea500d2dbc89119"
+      "sha256": "6895b03ced99322e5da047c62e8c0fd82565b437844a0db7222c1601598a6b1e"
     },
     {
       "path": "repository/README.md",
-      "sha256": "fe37457eca39da6fae609bbbfbab89e95ef01d1ab4c51f2df9f1aeb3ec724c20"
+      "sha256": "7d6f6a98f7850a98daa12863fcdd4539370a4ea014e0776675cddebca5845eb3"
+    },
+    {
+      "path": "runtime/backend.mjs",
+      "sha256": "4dd5f4d829d5bed2b9abd07978fdfd2f6fc55992e1308fbd82c147382510bdef"
+    },
+    {
+      "path": "runtime/jobs.mjs",
+      "sha256": "ef60f8ebffe146b69cdba85a934ef6c70b792c4596888a22586980cc653ee11c"
     },
     {
       "path": "runtime/local-tools.mjs",
@@ -226,19 +254,27 @@
     },
     {
       "path": "runtime/orchestrator.mjs",
-      "sha256": "2788959334d325b9e8def10b886a5a7f377585aafc95fab579c19dc874da6bf8"
+      "sha256": "699589a8763e3541001d2fd173d3f87c1d1984bf8ae7ffe02859315964fd97cd"
     },
     {
       "path": "runtime/policy.mjs",
       "sha256": "2ee7cff7f8724e79d4b9d996d7ba0960b500ebc380b1cc59f49780cd84e321e5"
     },
     {
+      "path": "runtime/supabase.mjs",
+      "sha256": "18a4f26787e7cb6e8163af6485ef2002548cd6ddcaaab5328aee1b857a75d895"
+    },
+    {
       "path": "scripts/benchmark.mjs",
-      "sha256": "821a78d7c81d3c27627a8f5278cd2e58de0d61c85ffd7abb89ea88d9a5183f22"
+      "sha256": "0a628cc37fa320e731a4b06acf2ed7b8d56a5f9180b63ed5b3f65aa1df2946d8"
+    },
+    {
+      "path": "scripts/build-edge.mjs",
+      "sha256": "d28cd72d307f955f5fe36acbe13ef92791b0c47e3f5a5172885125954b6197e0"
     },
     {
       "path": "scripts/build.mjs",
-      "sha256": "dc6c5dec87d25e9c7b19ddb7ba5255121ef7ebe2ac4aacc65aceea586ff9121d"
+      "sha256": "74e42cbd49721da5ae704ce54febd95bb3d7a1289a6bd96dd16908076199ce18"
     },
     {
       "path": "scripts/check-public-mcp.mjs",
@@ -246,7 +282,7 @@
     },
     {
       "path": "scripts/check.mjs",
-      "sha256": "d195ae01a62ae2aa13f259b886c207a9d7acc27784eddc36282c76b3b7123437"
+      "sha256": "1998452123295b2d1f315d4104958a5bd4cefcbe46dc6a8030b56041668c4b0b"
     },
     {
       "path": "scripts/dev.mjs",
@@ -254,7 +290,7 @@
     },
     {
       "path": "scripts/export-public.mjs",
-      "sha256": "8459cf2e7d033e8447091e9070eb333bb03370a6078f24d4ebfddf1b2e762031"
+      "sha256": "2b64543d902e9369d66a528d6c058ba15ed801eec75a7fe9f5fe8f8deb522852"
     },
     {
       "path": "scripts/generate-contracts.mjs",
@@ -262,7 +298,7 @@
     },
     {
       "path": "scripts/release-manifest.mjs",
-      "sha256": "e97bc7739f77491ab3421fb48f29ce6f1e9752eafbbe50992d967228055b650b"
+      "sha256": "a472b196e1a711d96ff32dca0cba9772430527256eb3a681f236991ce98d07ad"
     },
     {
       "path": "scripts/run-reference-plan.mjs",
@@ -273,8 +309,52 @@
       "sha256": "bd3c970a078cbbf30db6cfac52b4178fa8ab5252f742895fe7116d83c97494ce"
     },
     {
+      "path": "scripts/verify-jobs.mjs",
+      "sha256": "90e91f8f8e1b6bc378c47d96dc11843e552b828d896911b0c90f7219645108f3"
+    },
+    {
+      "path": "scripts/verify-supabase.mjs",
+      "sha256": "36eafb7c72a6f55a13cd1843f78c80eeb8880cba66b963a96a853ae017d3bf1d"
+    },
+    {
+      "path": "supabase/.temp/cli-latest",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "supabase/functions/trix-backend/index.ts",
+      "sha256": "ddf211e2a8d4e8a5442bda84ad98cf02ac40d8d75c65c3d5dbd0d653dc70f7ec"
+    },
+    {
+      "path": "supabase/migrations/20261023082357_trix_foundation.sql",
+      "sha256": "9f907fce1807c098a9c5af8c271524cd8701900c1cd0ef09ebaa126decd935a5"
+    },
+    {
+      "path": "supabase/migrations/20261023083010_trix_queue.sql",
+      "sha256": "9f403260520fa073a0b5928f7c62f4ad7b31ecdef228e256331f8267daab28f9"
+    },
+    {
+      "path": "supabase/migrations/20261023083351_trix_job_fencing.sql",
+      "sha256": "43c0da8bc6ea11fe2634ce3eef19a670ffe8aa758a7adddc9476e2913cb74bfe"
+    },
+    {
+      "path": "supabase/migrations/20261023085101_trix_queue_visibility.sql",
+      "sha256": "156a2ad438bb715d8eaeb9fb345dece15721892ced41d4c0ed40e9d79807ca91"
+    },
+    {
+      "path": "supabase/tests/queue-exhaustion.sql",
+      "sha256": "51735b260b51cceba0dfee5897fe537cd473703113eccb32756828f9871706c1"
+    },
+    {
       "path": "tests/agents.test.mjs",
       "sha256": "0ec3a1942e848d0babaaf6f79cc9817f6211be1c00beb53ced6875e088fc9ee5"
+    },
+    {
+      "path": "tests/backend.test.mjs",
+      "sha256": "ad93a2b3dc2270a27981c10402927b276cd5097fd872c4e7471bb870373fc081"
+    },
+    {
+      "path": "tests/background-state.test.mjs",
+      "sha256": "1033fba5379a1eadf7d7fdc21eb3f21491c7bbf1371ea00a197c63857b99f34d"
     },
     {
       "path": "tests/configurator.test.mjs",
@@ -285,12 +365,20 @@
       "sha256": "088400a2cad5a143f0477f8b8912bb5e8da561331e51c086ca71ac572ba24937"
     },
     {
+      "path": "tests/jobs.test.mjs",
+      "sha256": "c55a0a8857f016ee2e71670912f15f1f1cb02e46344b339baf993d5e1b650e4c"
+    },
+    {
       "path": "tests/orchestrator.test.mjs",
       "sha256": "a8dae01adb26b5d3262bc2c5d2fd9bf896320eda34c6c24ab57768b77b95adb5"
     },
     {
       "path": "tests/product-guidance.test.mjs",
       "sha256": "cf885e44c391b14f39213f7e8e0c6ef750ea496f314f7cef1803bd46177f8bac"
+    },
+    {
+      "path": "tests/supabase.test.mjs",
+      "sha256": "a310e0b2783ec8913a1bf47200e0248b944edf4549d5c9884b8974a6b66b2a4d"
     },
     {
       "path": "tests/task-workspace.test.mjs",
@@ -302,17 +390,33 @@
     },
     {
       "path": "worker/index.js",
-      "sha256": "9ed34f4176201157f69d0a4d85c12da3db3b3b31216c0a7395716a398b672766"
+      "sha256": "57e68020944711bfc7cb68a995cff48cbfaecd721edb1f6b4bc09b393e586047"
     }
   ],
   "evidence": [
     {
-      "path": "reports/test-results-v0.5.0.json",
-      "sha256": "869cc107e7d0873dd2a6b270685f0a0bd886e6d67483b7c836cb7c23e8c10e35"
+      "path": "reports/test-results-v0.6.0.json",
+      "sha256": "43ad8b753e9c65f5d45eea63c02c9ee5633936cd230bfcff0b6350257441d494"
     },
     {
-      "path": "reports/benchmark-v0.5.0.json",
-      "sha256": "e814ea96aa5f2c5f029911c59b2489b41f1503e9acf1b8e5f8803b9232540353"
+      "path": "reports/benchmark-v0.6.0.json",
+      "sha256": "a9cb43cfbacdfc9f3f1c7ee37b7c504692817bb4e889cb896918ece28e8dc7d2"
+    },
+    {
+      "path": "reports/supabase-v0.6.0.json",
+      "sha256": "ad6203a70381d7708566eb2c3a7d538c71ca62356fa0e127bc2086ac54c29ac2"
+    },
+    {
+      "path": "reports/queue-v0.6.0.json",
+      "sha256": "aa0aa580bea997a494c8c6cb898c15ce5e00fcd0c63a1f9a8c1e6e1210466703"
+    },
+    {
+      "path": "reports/audit-v0.6.0.json",
+      "sha256": "8245364408b72ee409be354bf592a6ae0c30b34e8a90fef162a037fa67674284"
+    },
+    {
+      "path": "reports/browser-v0.6.0.json",
+      "sha256": "4ef0b7ee90351e40e0204bbd10ef72e2fc316a5a3b60ae6be08eaa1e9a5b3e2c"
     },
     {
       "path": "reports/baseline-v0.4.json",
@@ -340,6 +444,6 @@
     "Live model and MCP calls",
     "Target implementation, audit independence and delivery",
     "Physical accelerator/model backends",
-    "Production load, retention and recovery SLOs"
+    "Production load, backup restoration, retention and recovery SLOs"
   ]
 }

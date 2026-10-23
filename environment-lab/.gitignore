@@ -3,3 +3,7 @@ dist/
 .env
 .env.*
 !.env.example
+
+.workspaces/
+.superpowers/
+supabase/.temp/

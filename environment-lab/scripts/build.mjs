@@ -5,7 +5,7 @@ const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8'
 async function collect(dir){for(const e of await readdir(path.join(root,'public',dir),{withFileTypes:true})){const name=path.posix.join(dir,e.name);if(e.isDirectory())await collect(name);else{const ext=path.extname(name);if(!types[ext])throw Error('Unsupported public asset '+name);const binary=ext==='.zip';assets['/'+name]={type:types[ext],binary,content:await readFile(path.join(root,'public',name),binary?'base64':'utf8')};}}}
 await collect('');
 // This explicit dependency order keeps the no-dependency Worker bundle auditable.
-const modules=['public/release.mjs','public/product-info.mjs','public/specialists.mjs','runtime/policy.mjs','runtime/mcp.mjs','runtime/orchestrator.mjs','worker/index.js'];
+const modules=['public/release.mjs','public/product-info.mjs','public/specialists.mjs','runtime/policy.mjs','runtime/mcp.mjs','runtime/supabase.mjs','runtime/orchestrator.mjs','worker/index.js'];
 let source='const ASSETS='+JSON.stringify(assets)+';\n';
 const strip=s=>s.replace(/^import .*;\n/gm,'').replace(/\bexport (?=(?:async )?function|const|class)/g,'');
 source+='\nconst compatibilityDomain=(()=>{'+strip(await readFile(path.join(root,'public/compatibility.mjs'),'utf8'))+';return {architectures,operatingSystems,devices,backends,presetNames,sources,toYAML,defaults,preset,node,validate,assessGroup,buildConfig,markdown,importConfig};})();\n';

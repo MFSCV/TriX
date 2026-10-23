@@ -1,4 +1,4 @@
-# TriX conversational orchestration · 0.5.0
+# TriX conversational orchestration · 0.6.0
 
 This runtime record is part of the [current documentation index](README.md). The conversational interface supersedes the earlier dashboard-led UI. The conversation is the primary interface. Specialists, existing environment tools, reports and release evidence appear through typed contextual surfaces. The old task workspace remains reachable only for previous local history.
 
@@ -9,7 +9,7 @@ This runtime record is part of the [current documentation index](README.md). The
 - A server-side Responses API loop with separate specialist contexts. Only the orchestrator delegates. Specialists return reports to their parent; no peer channels or recursive delegation are exposed.
 - Server-owned MCP enrollment, live tool discovery, schema validation, fixed target arguments, role/purpose checks and per-task action grants. This adapter explicitly supports Streamable HTTP protocol **2025-11-25**; other versions fail closed. It supports JSON and bounded SSE responses, session headers, protocol errors, notification initialization and session cleanup. It does not implement OAuth enrollment, stdio, sampling or arbitrary URL proxies.
 - Built-in environment validation, configuration artifacts with SHA-256 and the pure CPU example are available to the model through `local_tool`, using an immutable environment snapshot attached when the task starts. Browser-local versions remain available without model credentials.
-- Serialized task blobs in R2, conditional ETag writes, per-user key prefixes, step leases, pre-dispatch effect checkpoints, retained receipts and explicit recovery states. Checkpoint writes are paced for R2's per-key rate limit. Records are operational evidence, not an independently immutable audit system.
+- Versioned Postgres checkpoints through an authenticated Supabase bridge, with legacy R2 records retained in their original store. Both paths use conditional writes, owner scoping, step leases, pre-dispatch effect checkpoints, retained receipts and explicit recovery states. Checkpoint writes are paced for R2's per-key rate limit. Records are operational evidence, not an independently immutable audit system.
 - Implementation invalidates previous gates. Test/audit/verification requests invalidate their previous verdict. Deployment requires passing test and external audit receipts for the exact current revision and revision-bound deployment arguments. A failed verdict can return to the orchestrator for another implementation and fresh tests. Timeout, missing receipt or unknown external outcome blocks automatic replay.
 
 ## Activation dependencies
@@ -56,7 +56,7 @@ An action result must include a stable receipt:
 ## Execution and recovery limits
 
 - Up to 64 orchestration steps, 12 assignments, 3 implementation iterations and 15 minutes per task. Measured model usage is checked at each step against a 24,000-token stop threshold; one in-flight response may cross that threshold. This is not a monetary billing cap or a tokenizer-enforced reservation.
-- One model or tool action per checkpointed HTTP step. The browser advances steps while open. Reloaded tasks expose Resume/Continue. R2 persists progress, but no unattended scheduler or continuously running worker is installed.
+- One model or tool action per checkpointed HTTP step. The browser advances foreground tasks while open. Explicit background tasks advance through the Supabase scheduled consumer; its model connection is configured separately. Expired runtime leases pause for review. See the [Supabase runtime](supabase-runtime.md) for setup, queue limits and real hosted CPU acceptance.
 - A lease that expires without a response becomes paused or reconciling. The API never assumes an interrupted external call failed. Stop prevents new dispatch once observed; an already sent request may complete and its receipt is retained.
 - `RECONCILING` requires an operator to inspect the provider and repair the authoritative task record using its exact receipt. No automatic reconciliation mutation, blind retry or arbitrary user-supplied "success" assertion is exposed. This deliberately blocks further writes until a real reconciliation adapter is enrolled in a future increment.
 - Server tasks currently have an account limit of 40, without a delete API. Browser-local history has a separate 40-task/3 MB bound. Context is up to eight text files, each at most 100 KB, read by the model in bounded 6,000-character chunks. Previous v0.3 local tasks remain in their original store.
@@ -78,6 +78,6 @@ Browser local preparation, browser CPU worker round-trip, server built-in execut
 
 ## Evidence and outstanding qualification
 
-Automated fixtures exercise the model/tool/delegation loop, exact revision gates, failing audits, fresh implementation invalidation, pre-dispatch checkpoints, uncertain outcome blocking, scope/target refusals, request identity, origin checks, step ownership and real built-in domain behavior. These fixtures do not establish live provider behavior, external implementation success, independent audit identity, deployment success or unattended operation. See [the release audit](release-audit-v0.5.0.md) for current checks. The 0.4 verification file remains historical evidence.
+Automated fixtures exercise the model/tool/delegation loop, exact revision gates, failing audits, fresh implementation invalidation, pre-dispatch checkpoints, uncertain outcome blocking, scope/target refusals, request identity, origin checks, step ownership and real built-in domain behavior. These fixtures do not establish live provider behavior, external implementation success, independent audit identity, deployment success or general unattended external execution. Hosted Supabase persistence and scheduled CPU execution have separate real acceptance evidence. See [the release audit](release-audit-v0.6.0.md) for current checks. The 0.4 verification file remains historical evidence.
 
 Protocol references: [OpenAI function calling](https://developers.openai.com/api/docs/guides/function-calling), [MCP 2025-11-25 transport](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports), [R2 conditional operations](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/).

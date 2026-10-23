@@ -1,8 +1,8 @@
 # TriX documentation index
 
-Document TRIX-DOC-001 · Application 0.5.0 · 22 October 2026 · Current implementation record.
+Document TRIX-DOC-001 · Application 0.6.0 · 23 October 2026 · Current implementation record.
 
-TriX has two related scopes: a proposed portable language and execution-contract programme, and an experimental application that implements part of that programme. The application's version is **0.5.0**; its planning engine is **0.2.0**, with environment schema **v2** and proposed standard revision **0.2**. These numbers are not interchangeable.
+TriX has two related scopes: a proposed portable language and execution-contract programme, and an experimental application that implements part of that programme. The application's version is **0.6.0**; its planning engine is **0.2.0**, with environment schema **v2** and proposed standard revision **0.2**. These numbers are not interchangeable.
 
 ## Read in this order
 
@@ -12,7 +12,8 @@ TriX has two related scopes: a proposed portable language and execution-contract
 | [Implementation baseline](implementation-baseline.md) | Current architecture, data boundaries, requirements, decisions, open gaps and acceptance mapping |
 | [Live activation status](activation-status.md) | Observed connections, real MCP/Windows checks and prerequisites still missing |
 | [Runtime and activation](orchestrator-runtime.md) | Model/MCP setup, specialist enforcement, provider receipts, limits and recovery |
-| [Release audit](release-audit-v0.5.0.md) | Findings, fixes, evidence and remaining verification limits for this release |
+| [Supabase runtime](supabase-runtime.md) | Persistence, RLS, private files, queues, scheduling, setup and recovery |
+| [Release audit](release-audit-v0.6.0.md) | Findings, fixes, evidence and remaining verification limits for this release |
 | [Version tracker](../version.json) | Machine-readable release identity and evidence paths |
 | [Change log](../CHANGELOG.md) | Changes between application releases |
 
@@ -36,6 +37,7 @@ The original PDF/DOCX editions, archives and their historical hashes remain unch
 
 - [0.2 implementation increment](implementation-increment-v0.2.md) and [verification](verification.md): retained domain/reference evidence.
 - [0.3 task workspace](agentic-ui-implementation.md) and [verification](verification-ui-v0.3.md): previous dashboard/workbench, retained for history.
+- [0.5 release audit](release-audit-v0.5.0.md): historical initial conversational release and its original evidence.
 - [0.4 verification](verification-ui-v0.4.md): first conversational runtime increment.
 - [Agent integration](agent-integration.md): current integration boundary, with earlier statements superseded explicitly.
 

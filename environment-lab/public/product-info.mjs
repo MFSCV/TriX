@@ -4,7 +4,7 @@ export const PRODUCT=Object.freeze({
  problem:'Different hardware, runtimes and tools have different constraints. TriX makes those constraints, permissions and results visible in one conversation.',
  today:'Available now: describe target environments, check compatibility, compare scenarios, export configurations and run the pure CPU example.',
  connected:'With a configured model and enrolled tools: delegate specialist work, request implementation and tests, review audit reports and deliver a verified revision.',
- roadmap:'The complete TriX source language, general agent CLI, native IDE integration, qualified accelerator execution and unattended operation remain separate implementation milestones.'
+ roadmap:'The complete TriX source language, general agent CLI, native IDE integration, qualified accelerator execution and general external execution remain separate implementation milestones. Supabase provides bounded scheduled steps when configured.'
 });
 export const PANEL_GUIDES=Object.freeze({
  about:{title:'What TriX is for',purpose:PRODUCT.purpose,input:'Describe the outcome, the target environment and any constraints.',output:'A plan, explicit compatibility conditions and inspectable evidence.',next:'Start with an environment, or inspect the connections needed for your goal.'},

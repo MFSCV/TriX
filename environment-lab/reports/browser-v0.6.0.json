@@ -1,0 +1,30 @@
+{
+  "schema": "trix.browser-smoke/v1",
+  "version": "0.6.0",
+  "created_at": "2026-10-23T08:42:47.413323+00:00",
+  "surface": "Managed local preview, disposable owner identity and in-memory R2; no production secrets",
+  "checks": [
+    {
+      "name": "Opening screen explains hardware, models, compatibility and environment export",
+      "status": "passed"
+    },
+    {
+      "name": "Connections distinguishes configured storage, missing model and absent preview scheduler",
+      "status": "passed"
+    },
+    {
+      "name": "Pure CPU request returns SUCCEEDED and result 50",
+      "status": "passed"
+    },
+    {
+      "name": "Evidence panel exposes the three-operation trace and SHA-256",
+      "status": "passed"
+    }
+  ],
+  "cpuDigest": "6516e94555016664f830748894d4a57f1dfdd3e0e21b710abe8221e41af0b044",
+  "limitations": [
+    "Supabase conditional UI controls are covered by source/API checks, not this R2 preview browser flow",
+    "Private deployed Site is not accessible from this cloud preview browser",
+    "No full accessibility conformance, live model or external target acceptance is inferred"
+  ]
+}

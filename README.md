@@ -2,7 +2,7 @@
 
 TriX is a proposed portable language and execution-contract programme for describing work across hardware architectures, operating systems and model/runtime backends. She separates intent and constraints from the adapters that execute them.
 
-The current **TriX application 0.5.0** provides a conversational planning workspace: describe hardware, runtimes and workload constraints, check compatibility, compare alternatives, export a portable configuration and inspect execution evidence. Her experimental orchestrator can delegate implementation, tests, audit and delivery when a model and scoped MCP tools are configured. Model inference and external target implementation are not activated or qualified; the [activation record](environment-lab/docs/activation-status.md) tracks actual connection progress.
+The current **TriX application 0.6.0** provides a conversational planning workspace: describe hardware, runtimes and workload constraints, check compatibility, compare alternatives, export a portable configuration and inspect execution evidence. Her experimental orchestrator can delegate implementation, tests, audit and delivery when a model and scoped MCP tools are configured. Supabase persistence, private files and bounded scheduled CPU processing are verified. Model inference and external target implementation are not activated or qualified; the [activation record](environment-lab/docs/activation-status.md) tracks actual connection progress.
 
 ## Find the right starting point
 
@@ -10,7 +10,7 @@ The current **TriX application 0.5.0** provides a conversational planning worksp
 | --- | --- |
 | Understand or use the current application | [Application guide](environment-lab/docs/product-guide.md) |
 | Develop or operate it | [Application README](environment-lab/README.md) and [current documentation index](environment-lab/docs/README.md) |
-| See release evidence and limitations | [Version tracker](environment-lab/version.json), [release audit](environment-lab/docs/release-audit-v0.5.0.md) and [change log](environment-lab/CHANGELOG.md) |
+| See release evidence and limitations | [Version tracker](environment-lab/version.json), [release audit](environment-lab/docs/release-audit-v0.6.0.md) and [change log](environment-lab/CHANGELOG.md) |
 | Study the proposed language | [Design and Implementation Standard 0.2](docs/TriX_Design_and_Implementation_Standard_v0_2.md) |
 | Review the broader connection design | [MCP and Connection Requirements 0.2](docs/TriX_MCP_and_Connection_Requirements_v0.2.md) |
 | Inspect original fixtures and decisions | [Preserved preimplementation pack](preimplementation/README.md) |

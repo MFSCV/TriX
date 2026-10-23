@@ -1,6 +1,6 @@
 # Agent integration status
 
-Application 0.5.0 · Current implementation record. Supersedes this file’s earlier static-site status. See the [documentation index](README.md) and [runtime contract](orchestrator-runtime.md).
+Application 0.6.0 · Current implementation record. Supersedes this file’s earlier static-site status. See the [documentation index](README.md) and [runtime contract](orchestrator-runtime.md).
 
 TriX contains a bounded server-side orchestrator and nine specialist definitions. A configured model may delegate one assignment at a time to a separate specialist context. Specialists report only to the orchestrator. Enrolled MCP tools are checked against server-owned roles, purposes, fixed targets, revision requirements and task authority. Configuration does not establish a successful live call.
 
@@ -20,6 +20,6 @@ The wider Global Coordinator / project orchestration / independently controlled 
 
 ## Acceptance boundary
 
-Deterministic tests exercise real local calculations and simulated model/MCP dispatch. Live provider reasoning, destination changes, independent audit provenance, native IDE integration, a general agent CLI, inbound MCP and unattended operation require their own adapters and evidence. The current CLI runs only the bounded CPU reference.
+Deterministic tests exercise real local calculations and simulated model/MCP dispatch. Live provider reasoning, destination changes, independent audit provenance, native IDE integration, a general agent CLI, inbound MCP and general external execution require their own adapters and evidence. Supabase persistence and bounded scheduled CPU execution have real hosted evidence in the [Supabase runtime record](supabase-runtime.md). The current CLI runs only the bounded CPU reference.
 
 Do not treat a generated artifact, a passing schema, a role definition, an authored skill or a deployment API acknowledgement as proof of completed end-to-end project implementation.

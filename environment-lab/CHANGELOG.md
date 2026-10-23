@@ -1,5 +1,13 @@
 # Application change log
 
+## 0.6.0 · 2026-10-23
+
+- Added server-only Supabase persistence with owner isolation, RLS, atomic CAS and normalized task evidence; retained legacy R2 conversations.
+- Added three private content-addressed Storage buckets, verified file receipts, Vault configuration, pgmq jobs, fenced consumers and one-minute Cron/pg_net dispatch.
+- Added a model-free scheduled CPU diagnostic in Connections, explicit background task activation and truthful configuration/recovery guidance.
+- Fixed review findings in background revocation, concurrent preference preservation and terminal queue failure visibility.
+- Verified actual hosted isolation, concurrent writes, private file bytes, scheduled result 50, deduplication and stop/lease/unknown-effect recovery. General model and external implementation acceptance remain open.
+
 ## 0.5.0 · 22 October 2026
 
 - Explain purpose and the first request on the opening screen; distinguish local, configured and verified capability.

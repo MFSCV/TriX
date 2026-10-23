@@ -1,0 +1,52 @@
+{
+  "schema": "trix.queue-acceptance/v1",
+  "created_at": "2026-10-23T08:54:25.912Z",
+  "scope": "Real hosted Cron → pg_net → authenticated Edge consumer → Postgres runtime CAS. Synthetic CPU graph, no model, browser or external implementation. Recovery tests additionally invoke the authenticated dispatcher.",
+  "checks": [
+    {
+      "name": "authenticated Worker creates a queued CPU diagnostic without model credentials",
+      "status": "passed"
+    },
+    {
+      "name": "Cron executes CPU output 50 without a browser or manual dispatcher call",
+      "status": "passed"
+    },
+    {
+      "name": "duplicate enqueue cannot re-execute a completed diagnostic",
+      "status": "passed"
+    },
+    {
+      "name": "background AI cannot be enabled without the processor model connection",
+      "status": "passed"
+    },
+    {
+      "name": "stop survives delivery; expired leases pause; unknown effects require reconciliation",
+      "status": "passed"
+    }
+  ],
+  "measurements": [
+    {
+      "name": "authenticated Worker creates a queued CPU diagnostic without model credentials",
+      "duration_ms": 2454.725
+    },
+    {
+      "name": "Cron executes CPU output 50 without a browser or manual dispatcher call",
+      "duration_ms": 35701.65
+    },
+    {
+      "name": "duplicate enqueue cannot re-execute a completed diagnostic",
+      "duration_ms": 1597.59
+    },
+    {
+      "name": "background AI cannot be enabled without the processor model connection",
+      "duration_ms": 2432.918
+    },
+    {
+      "name": "stop survives delivery; expired leases pause; unknown effects require reconciliation",
+      "duration_ms": 11139.804
+    }
+  ],
+  "scheduledDetection_ms": 35701.65,
+  "output": 50,
+  "modelReady": false
+}

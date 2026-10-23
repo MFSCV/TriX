@@ -1,0 +1,175 @@
+{
+  "schema": "trix.supabase-audit/v1",
+  "version": "0.6.0",
+  "created_at": "2026-10-23T08:54:58.165397+00:00",
+  "scope": "Native Supabase advisors, transactional RLS/fencing checks and author verification. Not an independent penetration test.",
+  "security": {
+    "lints": []
+  },
+  "performance": {
+    "lints": [
+      {
+        "name": "unused_index",
+        "title": "Unused Index",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Detects if an index has never been used and may be a candidate for removal.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+        "count": 11,
+        "findings": [
+          {
+            "detail": "Index \\`trix_jobs_project_idx\\` on table \\`public.trix_jobs\\` has not been used",
+            "metadata": {
+              "name": "trix_jobs",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_grants_project_idx\\` on table \\`public.trix_tool_grants\\` has not been used",
+            "metadata": {
+              "name": "trix_tool_grants",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_events_project_run_idx\\` on table \\`public.trix_run_events\\` has not been used",
+            "metadata": {
+              "name": "trix_run_events",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_delegations_project_run_idx\\` on table \\`public.trix_delegations\\` has not been used",
+            "metadata": {
+              "name": "trix_delegations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_delegations_run_idx\\` on table \\`public.trix_delegations\\` has not been used",
+            "metadata": {
+              "name": "trix_delegations",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_effects_project_run_idx\\` on table \\`public.trix_effects\\` has not been used",
+            "metadata": {
+              "name": "trix_effects",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_effects_run_idx\\` on table \\`public.trix_effects\\` has not been used",
+            "metadata": {
+              "name": "trix_effects",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_artifacts_project_run_idx\\` on table \\`public.trix_artifacts\\` has not been used",
+            "metadata": {
+              "name": "trix_artifacts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_artifacts_run_idx\\` on table \\`public.trix_artifacts\\` has not been used",
+            "metadata": {
+              "name": "trix_artifacts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_audit_project_run_idx\\` on table \\`public.trix_audit_findings\\` has not been used",
+            "metadata": {
+              "name": "trix_audit_findings",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          },
+          {
+            "detail": "Index \\`trix_audit_run_idx\\` on table \\`public.trix_audit_findings\\` has not been used",
+            "metadata": {
+              "name": "trix_audit_findings",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-10-23T08:35:24.824Z"
+          }
+        ]
+      },
+      {
+        "name": "auth_db_connections_absolute",
+        "title": "Auth DB Connection Strategy is not Percentage",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "PERFORMANCE"
+        ],
+        "description": "Using a percentage based allocation connection strategy for Auth can help to improve the server's performance when increasing instance size.",
+        "remediation": "https://supabase.com/docs/guides/deployment/going-into-prod",
+        "count": 1,
+        "findings": [
+          {
+            "detail": "Your project's Auth server is configured to use at most 10 connections. Increasing the instance size without manually adjusting this number will not improve the performance of the Auth server. Switch to a percentage based connection allocation strategy instead.",
+            "metadata": {
+              "type": "auth",
+              "entity": "Auth"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rls": {
+    "mappedOwners": [
+      1,
+      1
+    ],
+    "unmappedOwner": 0,
+    "method": "Transactional authenticated role and synthetic JWT claims; rolled back"
+  },
+  "fencing": {
+    "staleCompletionAccepted": false,
+    "expiredCheckpointFenced": true,
+    "unchangedVersion": 1
+  },
+  "review": {
+    "method": "Separate read-only source reviewer, one whole-change review; no second review. Author verified corrections with RED to GREEN and full regression. Not independent security certification.",
+    "reviewed_source_checkpoint": "8f16431",
+    "critical_findings": 0,
+    "important_findings": 3,
+    "evidence_defect_regraded_important": 1,
+    "corrected": [
+      "Background opt-out enforced before queue lease and external dispatch",
+      "Both concurrent background-toggle directions preserved through intermediate checkpoints",
+      "Terminal queue delivery and artifact-receipt failure exposed to UI, polling follows delivery state",
+      "Live missing-model gate now checks an ordinary runtime task and exact error"
+    ],
+    "retry_exhaustion_sql": "supabase/tests/queue-exhaustion.sql; failed before visibility migration, passed afterward",
+    "deferred_minor_findings": []
+  }
+}
